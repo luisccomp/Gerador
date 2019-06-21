@@ -1,0 +1,3058 @@
+State 0:
+programa' -> . programa [ # ]
+-- On PUBLIC shift to state 1
+-- On programa shift to state 182
+
+State 1:
+programa -> PUBLIC . CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On CLASS shift to state 2
+
+State 2:
+programa -> PUBLIC CLASS . ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On ID shift to state 3
+
+State 3:
+programa -> PUBLIC CLASS ID . ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On ACHAVE shift to state 4
+
+State 4:
+programa -> PUBLIC CLASS ID ACHAVE . funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On PUBLIC shift to state 5
+-- On funcoes shift to state 171
+-- On funcao shift to state 180
+-- On MAIN reduce production funcoes -> 
+
+State 5:
+funcao -> PUBLIC . STATIC tipo ID APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On STATIC shift to state 6
+
+State 6:
+funcao -> PUBLIC STATIC . tipo ID APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On VOID shift to state 7
+-- On STRING shift to state 8
+-- On INT shift to state 9
+-- On FLOAT shift to state 10
+-- On CHAR shift to state 11
+-- On BOOLEAN shift to state 12
+-- On tipo shift to state 13
+
+State 7:
+tipo -> VOID . [ ID ]
+-- On ID reduce production tipo -> VOID 
+
+State 8:
+tipo -> STRING . [ ID ]
+-- On ID reduce production tipo -> STRING 
+
+State 9:
+tipo -> INT . [ ID ]
+-- On ID reduce production tipo -> INT 
+
+State 10:
+tipo -> FLOAT . [ ID ]
+-- On ID reduce production tipo -> FLOAT 
+
+State 11:
+tipo -> CHAR . [ ID ]
+-- On ID reduce production tipo -> CHAR 
+
+State 12:
+tipo -> BOOLEAN . [ ID ]
+-- On ID reduce production tipo -> BOOLEAN 
+
+State 13:
+funcao -> PUBLIC STATIC tipo . ID APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On ID shift to state 14
+
+State 14:
+funcao -> PUBLIC STATIC tipo ID . APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On APAR shift to state 15
+
+State 15:
+funcao -> PUBLIC STATIC tipo ID APAR . parametros FPAR ACHAVE list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On VOID shift to state 7
+-- On STRING shift to state 8
+-- On INT shift to state 9
+-- On FLOAT shift to state 10
+-- On CHAR shift to state 11
+-- On BOOLEAN shift to state 12
+-- On tipo shift to state 16
+-- On parametros shift to state 18
+-- On parametro shift to state 168
+-- On FPAR reduce production parametros -> 
+
+State 16:
+parametro -> tipo . ID [ VIRG FPAR ]
+-- On ID shift to state 17
+
+State 17:
+parametro -> tipo ID . [ VIRG FPAR ]
+-- On VIRG reduce production parametro -> tipo ID 
+-- On FPAR reduce production parametro -> tipo ID 
+
+State 18:
+funcao -> PUBLIC STATIC tipo ID APAR parametros . FPAR ACHAVE list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On FPAR shift to state 19
+
+State 19:
+funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR . ACHAVE list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On ACHAVE shift to state 20
+
+State 20:
+funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR ACHAVE . list(declaracao) comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On VOID shift to state 7
+-- On STRING shift to state 8
+-- On INT shift to state 9
+-- On FLOAT shift to state 10
+-- On CHAR shift to state 11
+-- On BOOLEAN shift to state 12
+-- On tipo shift to state 21
+-- On list(declaracao) shift to state 27
+-- On declaracao shift to state 166
+-- On WHILE reduce production list(declaracao) -> 
+-- On SWITCH reduce production list(declaracao) -> 
+-- On RETURN reduce production list(declaracao) -> 
+-- On PRINT reduce production list(declaracao) -> 
+-- On NOT reduce production list(declaracao) -> 
+-- On MENOS reduce production list(declaracao) -> 
+-- On LITSTRING reduce production list(declaracao) -> 
+-- On LITINT reduce production list(declaracao) -> 
+-- On LITFLOAT reduce production list(declaracao) -> 
+-- On LITCHAR reduce production list(declaracao) -> 
+-- On LITBOOL reduce production list(declaracao) -> 
+-- On IF reduce production list(declaracao) -> 
+-- On ID reduce production list(declaracao) -> 
+-- On FOR reduce production list(declaracao) -> 
+-- On FCHAVE reduce production list(declaracao) -> 
+-- On APAR reduce production list(declaracao) -> 
+
+State 21:
+declaracao -> tipo . separated_nonempty_list(VIRG,ID) PTV [ WHILE VOID SWITCH STRING RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL INT IF ID FOR FLOAT FCHAVE CHAR BOOLEAN APAR ]
+-- On ID shift to state 22
+-- On separated_nonempty_list(VIRG,ID) shift to state 25
+
+State 22:
+separated_nonempty_list(VIRG,ID) -> ID . [ PTV ]
+separated_nonempty_list(VIRG,ID) -> ID . VIRG separated_nonempty_list(VIRG,ID) [ PTV ]
+-- On VIRG shift to state 23
+-- On PTV reduce production separated_nonempty_list(VIRG,ID) -> ID 
+
+State 23:
+separated_nonempty_list(VIRG,ID) -> ID VIRG . separated_nonempty_list(VIRG,ID) [ PTV ]
+-- On ID shift to state 22
+-- On separated_nonempty_list(VIRG,ID) shift to state 24
+
+State 24:
+separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) . [ PTV ]
+-- On PTV reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+
+State 25:
+declaracao -> tipo separated_nonempty_list(VIRG,ID) . PTV [ WHILE VOID SWITCH STRING RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL INT IF ID FOR FLOAT FCHAVE CHAR BOOLEAN APAR ]
+-- On PTV shift to state 26
+
+State 26:
+declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV . [ WHILE VOID SWITCH STRING RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL INT IF ID FOR FLOAT FCHAVE CHAR BOOLEAN APAR ]
+-- On WHILE reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On VOID reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On SWITCH reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On STRING reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On RETURN reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On PRINT reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On NOT reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On MENOS reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On LITSTRING reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On LITINT reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On LITFLOAT reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On LITCHAR reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On LITBOOL reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On INT reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On IF reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On ID reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On FOR reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On FLOAT reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On FCHAVE reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On CHAR reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On BOOLEAN reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+-- On APAR reduce production declaracao -> tipo separated_nonempty_list(VIRG,ID) PTV 
+
+State 27:
+funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR ACHAVE list(declaracao) . comandos FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 164
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+
+State 28:
+cmd_while -> WHILE . APAR expr FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On APAR shift to state 29
+
+State 29:
+cmd_while -> WHILE APAR . expr FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 79
+-- On exp_fun shift to state 46
+
+State 30:
+expr -> NOT . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 78
+-- On exp_fun shift to state 46
+
+State 31:
+expr -> MENOS . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 77
+-- On exp_fun shift to state 46
+
+State 32:
+expr -> LITSTRING . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> LITSTRING 
+-- On VEZESIGUAL reduce production expr -> LITSTRING 
+-- On VEZES reduce production expr -> LITSTRING 
+-- On PTV reduce production expr -> LITSTRING 
+-- On OULOG reduce production expr -> LITSTRING 
+-- On NOT reduce production expr -> LITSTRING 
+-- On MOD reduce production expr -> LITSTRING 
+-- On MENOSMENOS reduce production expr -> LITSTRING 
+-- On MENOSIGUAL reduce production expr -> LITSTRING 
+-- On MENOS reduce production expr -> LITSTRING 
+-- On MENORIGUAL reduce production expr -> LITSTRING 
+-- On MENOR reduce production expr -> LITSTRING 
+-- On MAISMAIS reduce production expr -> LITSTRING 
+-- On MAISIGUAL reduce production expr -> LITSTRING 
+-- On MAIS reduce production expr -> LITSTRING 
+-- On MAIORIGUAL reduce production expr -> LITSTRING 
+-- On MAIOR reduce production expr -> LITSTRING 
+-- On IGUAL reduce production expr -> LITSTRING 
+-- On FPAR reduce production expr -> LITSTRING 
+-- On ELOG reduce production expr -> LITSTRING 
+-- On DPTOS reduce production expr -> LITSTRING 
+-- On DIVIGUAL reduce production expr -> LITSTRING 
+-- On DIV reduce production expr -> LITSTRING 
+-- On DIFER reduce production expr -> LITSTRING 
+-- On ATRIB reduce production expr -> LITSTRING 
+
+State 33:
+expr -> LITINT . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> LITINT 
+-- On VEZESIGUAL reduce production expr -> LITINT 
+-- On VEZES reduce production expr -> LITINT 
+-- On PTV reduce production expr -> LITINT 
+-- On OULOG reduce production expr -> LITINT 
+-- On NOT reduce production expr -> LITINT 
+-- On MOD reduce production expr -> LITINT 
+-- On MENOSMENOS reduce production expr -> LITINT 
+-- On MENOSIGUAL reduce production expr -> LITINT 
+-- On MENOS reduce production expr -> LITINT 
+-- On MENORIGUAL reduce production expr -> LITINT 
+-- On MENOR reduce production expr -> LITINT 
+-- On MAISMAIS reduce production expr -> LITINT 
+-- On MAISIGUAL reduce production expr -> LITINT 
+-- On MAIS reduce production expr -> LITINT 
+-- On MAIORIGUAL reduce production expr -> LITINT 
+-- On MAIOR reduce production expr -> LITINT 
+-- On IGUAL reduce production expr -> LITINT 
+-- On FPAR reduce production expr -> LITINT 
+-- On ELOG reduce production expr -> LITINT 
+-- On DPTOS reduce production expr -> LITINT 
+-- On DIVIGUAL reduce production expr -> LITINT 
+-- On DIV reduce production expr -> LITINT 
+-- On DIFER reduce production expr -> LITINT 
+-- On ATRIB reduce production expr -> LITINT 
+
+State 34:
+expr -> LITFLOAT . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> LITFLOAT 
+-- On VEZESIGUAL reduce production expr -> LITFLOAT 
+-- On VEZES reduce production expr -> LITFLOAT 
+-- On PTV reduce production expr -> LITFLOAT 
+-- On OULOG reduce production expr -> LITFLOAT 
+-- On NOT reduce production expr -> LITFLOAT 
+-- On MOD reduce production expr -> LITFLOAT 
+-- On MENOSMENOS reduce production expr -> LITFLOAT 
+-- On MENOSIGUAL reduce production expr -> LITFLOAT 
+-- On MENOS reduce production expr -> LITFLOAT 
+-- On MENORIGUAL reduce production expr -> LITFLOAT 
+-- On MENOR reduce production expr -> LITFLOAT 
+-- On MAISMAIS reduce production expr -> LITFLOAT 
+-- On MAISIGUAL reduce production expr -> LITFLOAT 
+-- On MAIS reduce production expr -> LITFLOAT 
+-- On MAIORIGUAL reduce production expr -> LITFLOAT 
+-- On MAIOR reduce production expr -> LITFLOAT 
+-- On IGUAL reduce production expr -> LITFLOAT 
+-- On FPAR reduce production expr -> LITFLOAT 
+-- On ELOG reduce production expr -> LITFLOAT 
+-- On DPTOS reduce production expr -> LITFLOAT 
+-- On DIVIGUAL reduce production expr -> LITFLOAT 
+-- On DIV reduce production expr -> LITFLOAT 
+-- On DIFER reduce production expr -> LITFLOAT 
+-- On ATRIB reduce production expr -> LITFLOAT 
+
+State 35:
+expr -> LITCHAR . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> LITCHAR 
+-- On VEZESIGUAL reduce production expr -> LITCHAR 
+-- On VEZES reduce production expr -> LITCHAR 
+-- On PTV reduce production expr -> LITCHAR 
+-- On OULOG reduce production expr -> LITCHAR 
+-- On NOT reduce production expr -> LITCHAR 
+-- On MOD reduce production expr -> LITCHAR 
+-- On MENOSMENOS reduce production expr -> LITCHAR 
+-- On MENOSIGUAL reduce production expr -> LITCHAR 
+-- On MENOS reduce production expr -> LITCHAR 
+-- On MENORIGUAL reduce production expr -> LITCHAR 
+-- On MENOR reduce production expr -> LITCHAR 
+-- On MAISMAIS reduce production expr -> LITCHAR 
+-- On MAISIGUAL reduce production expr -> LITCHAR 
+-- On MAIS reduce production expr -> LITCHAR 
+-- On MAIORIGUAL reduce production expr -> LITCHAR 
+-- On MAIOR reduce production expr -> LITCHAR 
+-- On IGUAL reduce production expr -> LITCHAR 
+-- On FPAR reduce production expr -> LITCHAR 
+-- On ELOG reduce production expr -> LITCHAR 
+-- On DPTOS reduce production expr -> LITCHAR 
+-- On DIVIGUAL reduce production expr -> LITCHAR 
+-- On DIV reduce production expr -> LITCHAR 
+-- On DIFER reduce production expr -> LITCHAR 
+-- On ATRIB reduce production expr -> LITCHAR 
+
+State 36:
+expr -> LITBOOL . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> LITBOOL 
+-- On VEZESIGUAL reduce production expr -> LITBOOL 
+-- On VEZES reduce production expr -> LITBOOL 
+-- On PTV reduce production expr -> LITBOOL 
+-- On OULOG reduce production expr -> LITBOOL 
+-- On NOT reduce production expr -> LITBOOL 
+-- On MOD reduce production expr -> LITBOOL 
+-- On MENOSMENOS reduce production expr -> LITBOOL 
+-- On MENOSIGUAL reduce production expr -> LITBOOL 
+-- On MENOS reduce production expr -> LITBOOL 
+-- On MENORIGUAL reduce production expr -> LITBOOL 
+-- On MENOR reduce production expr -> LITBOOL 
+-- On MAISMAIS reduce production expr -> LITBOOL 
+-- On MAISIGUAL reduce production expr -> LITBOOL 
+-- On MAIS reduce production expr -> LITBOOL 
+-- On MAIORIGUAL reduce production expr -> LITBOOL 
+-- On MAIOR reduce production expr -> LITBOOL 
+-- On IGUAL reduce production expr -> LITBOOL 
+-- On FPAR reduce production expr -> LITBOOL 
+-- On ELOG reduce production expr -> LITBOOL 
+-- On DPTOS reduce production expr -> LITBOOL 
+-- On DIVIGUAL reduce production expr -> LITBOOL 
+-- On DIV reduce production expr -> LITBOOL 
+-- On DIFER reduce production expr -> LITBOOL 
+-- On ATRIB reduce production expr -> LITBOOL 
+
+State 37:
+exp_fun -> ID . APAR argumentos FPAR [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+variavel -> ID . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On APAR shift to state 38
+-- On VIRG reduce production variavel -> ID 
+-- On VEZESIGUAL reduce production variavel -> ID 
+-- On VEZES reduce production variavel -> ID 
+-- On PTV reduce production variavel -> ID 
+-- On OULOG reduce production variavel -> ID 
+-- On NOT reduce production variavel -> ID 
+-- On MOD reduce production variavel -> ID 
+-- On MENOSMENOS reduce production variavel -> ID 
+-- On MENOSIGUAL reduce production variavel -> ID 
+-- On MENOS reduce production variavel -> ID 
+-- On MENORIGUAL reduce production variavel -> ID 
+-- On MENOR reduce production variavel -> ID 
+-- On MAISMAIS reduce production variavel -> ID 
+-- On MAISIGUAL reduce production variavel -> ID 
+-- On MAIS reduce production variavel -> ID 
+-- On MAIORIGUAL reduce production variavel -> ID 
+-- On MAIOR reduce production variavel -> ID 
+-- On IGUAL reduce production variavel -> ID 
+-- On FPAR reduce production variavel -> ID 
+-- On ELOG reduce production variavel -> ID 
+-- On DPTOS reduce production variavel -> ID 
+-- On DIVIGUAL reduce production variavel -> ID 
+-- On DIV reduce production variavel -> ID 
+-- On DIFER reduce production variavel -> ID 
+-- On ATRIB reduce production variavel -> ID 
+
+State 38:
+exp_fun -> ID APAR . argumentos FPAR [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 72
+-- On exp_fun shift to state 46
+-- On argumentos shift to state 75
+-- On FPAR reduce production argumentos -> 
+
+State 39:
+expr -> APAR . expr FPAR [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 41
+-- On exp_fun shift to state 46
+
+State 40:
+expr -> variavel . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> variavel 
+-- On VEZESIGUAL reduce production expr -> variavel 
+-- On VEZES reduce production expr -> variavel 
+-- On PTV reduce production expr -> variavel 
+-- On OULOG reduce production expr -> variavel 
+-- On NOT reduce production expr -> variavel 
+-- On MOD reduce production expr -> variavel 
+-- On MENOSMENOS reduce production expr -> variavel 
+-- On MENOSIGUAL reduce production expr -> variavel 
+-- On MENOS reduce production expr -> variavel 
+-- On MENORIGUAL reduce production expr -> variavel 
+-- On MENOR reduce production expr -> variavel 
+-- On MAISMAIS reduce production expr -> variavel 
+-- On MAISIGUAL reduce production expr -> variavel 
+-- On MAIS reduce production expr -> variavel 
+-- On MAIORIGUAL reduce production expr -> variavel 
+-- On MAIOR reduce production expr -> variavel 
+-- On IGUAL reduce production expr -> variavel 
+-- On FPAR reduce production expr -> variavel 
+-- On ELOG reduce production expr -> variavel 
+-- On DPTOS reduce production expr -> variavel 
+-- On DIVIGUAL reduce production expr -> variavel 
+-- On DIV reduce production expr -> variavel 
+-- On DIFER reduce production expr -> variavel 
+-- On ATRIB reduce production expr -> variavel 
+
+State 41:
+expr -> APAR expr . FPAR [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On FPAR shift to state 71
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+
+State 42:
+expr -> expr VEZES . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 43
+-- On exp_fun shift to state 46
+
+State 43:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr VEZES expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 44
+-- On VIRG reduce production expr -> expr VEZES expr 
+-- On VEZESIGUAL reduce production expr -> expr VEZES expr 
+-- On VEZES reduce production expr -> expr VEZES expr 
+-- On PTV reduce production expr -> expr VEZES expr 
+-- On OULOG reduce production expr -> expr VEZES expr 
+-- On MOD reduce production expr -> expr VEZES expr 
+-- On MENOSMENOS reduce production expr -> expr VEZES expr 
+-- On MENOSIGUAL reduce production expr -> expr VEZES expr 
+-- On MENOS reduce production expr -> expr VEZES expr 
+-- On MENORIGUAL reduce production expr -> expr VEZES expr 
+-- On MENOR reduce production expr -> expr VEZES expr 
+-- On MAISMAIS reduce production expr -> expr VEZES expr 
+-- On MAISIGUAL reduce production expr -> expr VEZES expr 
+-- On MAIS reduce production expr -> expr VEZES expr 
+-- On MAIORIGUAL reduce production expr -> expr VEZES expr 
+-- On MAIOR reduce production expr -> expr VEZES expr 
+-- On IGUAL reduce production expr -> expr VEZES expr 
+-- On FPAR reduce production expr -> expr VEZES expr 
+-- On ELOG reduce production expr -> expr VEZES expr 
+-- On DPTOS reduce production expr -> expr VEZES expr 
+-- On DIVIGUAL reduce production expr -> expr VEZES expr 
+-- On DIV reduce production expr -> expr VEZES expr 
+-- On DIFER reduce production expr -> expr VEZES expr 
+-- On ATRIB reduce production expr -> expr VEZES expr 
+
+State 44:
+expr -> expr NOT . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 45
+-- On exp_fun shift to state 46
+
+State 45:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr NOT expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 44
+-- On VIRG reduce production expr -> expr NOT expr 
+-- On VEZESIGUAL reduce production expr -> expr NOT expr 
+-- On VEZES reduce production expr -> expr NOT expr 
+-- On PTV reduce production expr -> expr NOT expr 
+-- On OULOG reduce production expr -> expr NOT expr 
+-- On MOD reduce production expr -> expr NOT expr 
+-- On MENOSMENOS reduce production expr -> expr NOT expr 
+-- On MENOSIGUAL reduce production expr -> expr NOT expr 
+-- On MENOS reduce production expr -> expr NOT expr 
+-- On MENORIGUAL reduce production expr -> expr NOT expr 
+-- On MENOR reduce production expr -> expr NOT expr 
+-- On MAISMAIS reduce production expr -> expr NOT expr 
+-- On MAISIGUAL reduce production expr -> expr NOT expr 
+-- On MAIS reduce production expr -> expr NOT expr 
+-- On MAIORIGUAL reduce production expr -> expr NOT expr 
+-- On MAIOR reduce production expr -> expr NOT expr 
+-- On IGUAL reduce production expr -> expr NOT expr 
+-- On FPAR reduce production expr -> expr NOT expr 
+-- On ELOG reduce production expr -> expr NOT expr 
+-- On DPTOS reduce production expr -> expr NOT expr 
+-- On DIVIGUAL reduce production expr -> expr NOT expr 
+-- On DIV reduce production expr -> expr NOT expr 
+-- On DIFER reduce production expr -> expr NOT expr 
+-- On ATRIB reduce production expr -> expr NOT expr 
+
+State 46:
+expr -> exp_fun . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> exp_fun 
+-- On VEZESIGUAL reduce production expr -> exp_fun 
+-- On VEZES reduce production expr -> exp_fun 
+-- On PTV reduce production expr -> exp_fun 
+-- On OULOG reduce production expr -> exp_fun 
+-- On NOT reduce production expr -> exp_fun 
+-- On MOD reduce production expr -> exp_fun 
+-- On MENOSMENOS reduce production expr -> exp_fun 
+-- On MENOSIGUAL reduce production expr -> exp_fun 
+-- On MENOS reduce production expr -> exp_fun 
+-- On MENORIGUAL reduce production expr -> exp_fun 
+-- On MENOR reduce production expr -> exp_fun 
+-- On MAISMAIS reduce production expr -> exp_fun 
+-- On MAISIGUAL reduce production expr -> exp_fun 
+-- On MAIS reduce production expr -> exp_fun 
+-- On MAIORIGUAL reduce production expr -> exp_fun 
+-- On MAIOR reduce production expr -> exp_fun 
+-- On IGUAL reduce production expr -> exp_fun 
+-- On FPAR reduce production expr -> exp_fun 
+-- On ELOG reduce production expr -> exp_fun 
+-- On DPTOS reduce production expr -> exp_fun 
+-- On DIVIGUAL reduce production expr -> exp_fun 
+-- On DIV reduce production expr -> exp_fun 
+-- On DIFER reduce production expr -> exp_fun 
+-- On ATRIB reduce production expr -> exp_fun 
+
+State 47:
+expr -> expr OULOG . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 48
+-- On exp_fun shift to state 46
+
+State 48:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr OULOG expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On VIRG reduce production expr -> expr OULOG expr 
+-- On VEZESIGUAL reduce production expr -> expr OULOG expr 
+-- On PTV reduce production expr -> expr OULOG expr 
+-- On OULOG reduce production expr -> expr OULOG expr 
+-- On MENOSMENOS reduce production expr -> expr OULOG expr 
+-- On MENOSIGUAL reduce production expr -> expr OULOG expr 
+-- On MAISMAIS reduce production expr -> expr OULOG expr 
+-- On MAISIGUAL reduce production expr -> expr OULOG expr 
+-- On FPAR reduce production expr -> expr OULOG expr 
+-- On DPTOS reduce production expr -> expr OULOG expr 
+-- On DIVIGUAL reduce production expr -> expr OULOG expr 
+-- On ATRIB reduce production expr -> expr OULOG expr 
+
+State 49:
+expr -> expr MOD . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 50
+-- On exp_fun shift to state 46
+
+State 50:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr MOD expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 44
+-- On VIRG reduce production expr -> expr MOD expr 
+-- On VEZESIGUAL reduce production expr -> expr MOD expr 
+-- On VEZES reduce production expr -> expr MOD expr 
+-- On PTV reduce production expr -> expr MOD expr 
+-- On OULOG reduce production expr -> expr MOD expr 
+-- On MOD reduce production expr -> expr MOD expr 
+-- On MENOSMENOS reduce production expr -> expr MOD expr 
+-- On MENOSIGUAL reduce production expr -> expr MOD expr 
+-- On MENOS reduce production expr -> expr MOD expr 
+-- On MENORIGUAL reduce production expr -> expr MOD expr 
+-- On MENOR reduce production expr -> expr MOD expr 
+-- On MAISMAIS reduce production expr -> expr MOD expr 
+-- On MAISIGUAL reduce production expr -> expr MOD expr 
+-- On MAIS reduce production expr -> expr MOD expr 
+-- On MAIORIGUAL reduce production expr -> expr MOD expr 
+-- On MAIOR reduce production expr -> expr MOD expr 
+-- On IGUAL reduce production expr -> expr MOD expr 
+-- On FPAR reduce production expr -> expr MOD expr 
+-- On ELOG reduce production expr -> expr MOD expr 
+-- On DPTOS reduce production expr -> expr MOD expr 
+-- On DIVIGUAL reduce production expr -> expr MOD expr 
+-- On DIV reduce production expr -> expr MOD expr 
+-- On DIFER reduce production expr -> expr MOD expr 
+-- On ATRIB reduce production expr -> expr MOD expr 
+
+State 51:
+expr -> expr MENOS . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 52
+-- On exp_fun shift to state 46
+
+State 52:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr MENOS expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr MENOS expr 
+-- On VEZESIGUAL reduce production expr -> expr MENOS expr 
+-- On PTV reduce production expr -> expr MENOS expr 
+-- On OULOG reduce production expr -> expr MENOS expr 
+-- On MENOSMENOS reduce production expr -> expr MENOS expr 
+-- On MENOSIGUAL reduce production expr -> expr MENOS expr 
+-- On MENOS reduce production expr -> expr MENOS expr 
+-- On MENORIGUAL reduce production expr -> expr MENOS expr 
+-- On MENOR reduce production expr -> expr MENOS expr 
+-- On MAISMAIS reduce production expr -> expr MENOS expr 
+-- On MAISIGUAL reduce production expr -> expr MENOS expr 
+-- On MAIS reduce production expr -> expr MENOS expr 
+-- On MAIORIGUAL reduce production expr -> expr MENOS expr 
+-- On MAIOR reduce production expr -> expr MENOS expr 
+-- On IGUAL reduce production expr -> expr MENOS expr 
+-- On FPAR reduce production expr -> expr MENOS expr 
+-- On ELOG reduce production expr -> expr MENOS expr 
+-- On DPTOS reduce production expr -> expr MENOS expr 
+-- On DIVIGUAL reduce production expr -> expr MENOS expr 
+-- On DIFER reduce production expr -> expr MENOS expr 
+-- On ATRIB reduce production expr -> expr MENOS expr 
+
+State 53:
+expr -> expr DIV . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 54
+-- On exp_fun shift to state 46
+
+State 54:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr DIV expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 44
+-- On VIRG reduce production expr -> expr DIV expr 
+-- On VEZESIGUAL reduce production expr -> expr DIV expr 
+-- On VEZES reduce production expr -> expr DIV expr 
+-- On PTV reduce production expr -> expr DIV expr 
+-- On OULOG reduce production expr -> expr DIV expr 
+-- On MOD reduce production expr -> expr DIV expr 
+-- On MENOSMENOS reduce production expr -> expr DIV expr 
+-- On MENOSIGUAL reduce production expr -> expr DIV expr 
+-- On MENOS reduce production expr -> expr DIV expr 
+-- On MENORIGUAL reduce production expr -> expr DIV expr 
+-- On MENOR reduce production expr -> expr DIV expr 
+-- On MAISMAIS reduce production expr -> expr DIV expr 
+-- On MAISIGUAL reduce production expr -> expr DIV expr 
+-- On MAIS reduce production expr -> expr DIV expr 
+-- On MAIORIGUAL reduce production expr -> expr DIV expr 
+-- On MAIOR reduce production expr -> expr DIV expr 
+-- On IGUAL reduce production expr -> expr DIV expr 
+-- On FPAR reduce production expr -> expr DIV expr 
+-- On ELOG reduce production expr -> expr DIV expr 
+-- On DPTOS reduce production expr -> expr DIV expr 
+-- On DIVIGUAL reduce production expr -> expr DIV expr 
+-- On DIV reduce production expr -> expr DIV expr 
+-- On DIFER reduce production expr -> expr DIV expr 
+-- On ATRIB reduce production expr -> expr DIV expr 
+
+State 55:
+expr -> expr MENORIGUAL . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 56
+-- On exp_fun shift to state 46
+
+State 56:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr MENORIGUAL expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MAIS shift to state 57
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr MENORIGUAL expr 
+-- On VEZESIGUAL reduce production expr -> expr MENORIGUAL expr 
+-- On PTV reduce production expr -> expr MENORIGUAL expr 
+-- On OULOG reduce production expr -> expr MENORIGUAL expr 
+-- On MENOSMENOS reduce production expr -> expr MENORIGUAL expr 
+-- On MENOSIGUAL reduce production expr -> expr MENORIGUAL expr 
+-- On MENORIGUAL reduce production expr -> expr MENORIGUAL expr 
+-- On MENOR reduce production expr -> expr MENORIGUAL expr 
+-- On MAISMAIS reduce production expr -> expr MENORIGUAL expr 
+-- On MAISIGUAL reduce production expr -> expr MENORIGUAL expr 
+-- On MAIORIGUAL reduce production expr -> expr MENORIGUAL expr 
+-- On MAIOR reduce production expr -> expr MENORIGUAL expr 
+-- On IGUAL reduce production expr -> expr MENORIGUAL expr 
+-- On FPAR reduce production expr -> expr MENORIGUAL expr 
+-- On ELOG reduce production expr -> expr MENORIGUAL expr 
+-- On DPTOS reduce production expr -> expr MENORIGUAL expr 
+-- On DIVIGUAL reduce production expr -> expr MENORIGUAL expr 
+-- On DIFER reduce production expr -> expr MENORIGUAL expr 
+-- On ATRIB reduce production expr -> expr MENORIGUAL expr 
+
+State 57:
+expr -> expr MAIS . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 58
+-- On exp_fun shift to state 46
+
+State 58:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr MAIS expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr MAIS expr 
+-- On VEZESIGUAL reduce production expr -> expr MAIS expr 
+-- On PTV reduce production expr -> expr MAIS expr 
+-- On OULOG reduce production expr -> expr MAIS expr 
+-- On MENOSMENOS reduce production expr -> expr MAIS expr 
+-- On MENOSIGUAL reduce production expr -> expr MAIS expr 
+-- On MENOS reduce production expr -> expr MAIS expr 
+-- On MENORIGUAL reduce production expr -> expr MAIS expr 
+-- On MENOR reduce production expr -> expr MAIS expr 
+-- On MAISMAIS reduce production expr -> expr MAIS expr 
+-- On MAISIGUAL reduce production expr -> expr MAIS expr 
+-- On MAIS reduce production expr -> expr MAIS expr 
+-- On MAIORIGUAL reduce production expr -> expr MAIS expr 
+-- On MAIOR reduce production expr -> expr MAIS expr 
+-- On IGUAL reduce production expr -> expr MAIS expr 
+-- On FPAR reduce production expr -> expr MAIS expr 
+-- On ELOG reduce production expr -> expr MAIS expr 
+-- On DPTOS reduce production expr -> expr MAIS expr 
+-- On DIVIGUAL reduce production expr -> expr MAIS expr 
+-- On DIFER reduce production expr -> expr MAIS expr 
+-- On ATRIB reduce production expr -> expr MAIS expr 
+
+State 59:
+expr -> expr MENOR . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 60
+-- On exp_fun shift to state 46
+
+State 60:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr MENOR expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MAIS shift to state 57
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr MENOR expr 
+-- On VEZESIGUAL reduce production expr -> expr MENOR expr 
+-- On PTV reduce production expr -> expr MENOR expr 
+-- On OULOG reduce production expr -> expr MENOR expr 
+-- On MENOSMENOS reduce production expr -> expr MENOR expr 
+-- On MENOSIGUAL reduce production expr -> expr MENOR expr 
+-- On MENORIGUAL reduce production expr -> expr MENOR expr 
+-- On MENOR reduce production expr -> expr MENOR expr 
+-- On MAISMAIS reduce production expr -> expr MENOR expr 
+-- On MAISIGUAL reduce production expr -> expr MENOR expr 
+-- On MAIORIGUAL reduce production expr -> expr MENOR expr 
+-- On MAIOR reduce production expr -> expr MENOR expr 
+-- On IGUAL reduce production expr -> expr MENOR expr 
+-- On FPAR reduce production expr -> expr MENOR expr 
+-- On ELOG reduce production expr -> expr MENOR expr 
+-- On DPTOS reduce production expr -> expr MENOR expr 
+-- On DIVIGUAL reduce production expr -> expr MENOR expr 
+-- On DIFER reduce production expr -> expr MENOR expr 
+-- On ATRIB reduce production expr -> expr MENOR expr 
+
+State 61:
+expr -> expr MAIORIGUAL . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 62
+-- On exp_fun shift to state 46
+
+State 62:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr MAIORIGUAL expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MAIS shift to state 57
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr MAIORIGUAL expr 
+-- On VEZESIGUAL reduce production expr -> expr MAIORIGUAL expr 
+-- On PTV reduce production expr -> expr MAIORIGUAL expr 
+-- On OULOG reduce production expr -> expr MAIORIGUAL expr 
+-- On MENOSMENOS reduce production expr -> expr MAIORIGUAL expr 
+-- On MENOSIGUAL reduce production expr -> expr MAIORIGUAL expr 
+-- On MENORIGUAL reduce production expr -> expr MAIORIGUAL expr 
+-- On MENOR reduce production expr -> expr MAIORIGUAL expr 
+-- On MAISMAIS reduce production expr -> expr MAIORIGUAL expr 
+-- On MAISIGUAL reduce production expr -> expr MAIORIGUAL expr 
+-- On MAIORIGUAL reduce production expr -> expr MAIORIGUAL expr 
+-- On MAIOR reduce production expr -> expr MAIORIGUAL expr 
+-- On IGUAL reduce production expr -> expr MAIORIGUAL expr 
+-- On FPAR reduce production expr -> expr MAIORIGUAL expr 
+-- On ELOG reduce production expr -> expr MAIORIGUAL expr 
+-- On DPTOS reduce production expr -> expr MAIORIGUAL expr 
+-- On DIVIGUAL reduce production expr -> expr MAIORIGUAL expr 
+-- On DIFER reduce production expr -> expr MAIORIGUAL expr 
+-- On ATRIB reduce production expr -> expr MAIORIGUAL expr 
+
+State 63:
+expr -> expr MAIOR . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 64
+-- On exp_fun shift to state 46
+
+State 64:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr MAIOR expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MAIS shift to state 57
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr MAIOR expr 
+-- On VEZESIGUAL reduce production expr -> expr MAIOR expr 
+-- On PTV reduce production expr -> expr MAIOR expr 
+-- On OULOG reduce production expr -> expr MAIOR expr 
+-- On MENOSMENOS reduce production expr -> expr MAIOR expr 
+-- On MENOSIGUAL reduce production expr -> expr MAIOR expr 
+-- On MENORIGUAL reduce production expr -> expr MAIOR expr 
+-- On MENOR reduce production expr -> expr MAIOR expr 
+-- On MAISMAIS reduce production expr -> expr MAIOR expr 
+-- On MAISIGUAL reduce production expr -> expr MAIOR expr 
+-- On MAIORIGUAL reduce production expr -> expr MAIOR expr 
+-- On MAIOR reduce production expr -> expr MAIOR expr 
+-- On IGUAL reduce production expr -> expr MAIOR expr 
+-- On FPAR reduce production expr -> expr MAIOR expr 
+-- On ELOG reduce production expr -> expr MAIOR expr 
+-- On DPTOS reduce production expr -> expr MAIOR expr 
+-- On DIVIGUAL reduce production expr -> expr MAIOR expr 
+-- On DIFER reduce production expr -> expr MAIOR expr 
+-- On ATRIB reduce production expr -> expr MAIOR expr 
+
+State 65:
+expr -> expr IGUAL . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 66
+-- On exp_fun shift to state 46
+
+State 66:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr IGUAL expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr IGUAL expr 
+-- On VEZESIGUAL reduce production expr -> expr IGUAL expr 
+-- On PTV reduce production expr -> expr IGUAL expr 
+-- On OULOG reduce production expr -> expr IGUAL expr 
+-- On MENOSMENOS reduce production expr -> expr IGUAL expr 
+-- On MENOSIGUAL reduce production expr -> expr IGUAL expr 
+-- On MAISMAIS reduce production expr -> expr IGUAL expr 
+-- On MAISIGUAL reduce production expr -> expr IGUAL expr 
+-- On IGUAL reduce production expr -> expr IGUAL expr 
+-- On FPAR reduce production expr -> expr IGUAL expr 
+-- On ELOG reduce production expr -> expr IGUAL expr 
+-- On DPTOS reduce production expr -> expr IGUAL expr 
+-- On DIVIGUAL reduce production expr -> expr IGUAL expr 
+-- On DIFER reduce production expr -> expr IGUAL expr 
+-- On ATRIB reduce production expr -> expr IGUAL expr 
+
+State 67:
+expr -> expr ELOG . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 68
+-- On exp_fun shift to state 46
+
+State 68:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr ELOG expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On VIRG reduce production expr -> expr ELOG expr 
+-- On VEZESIGUAL reduce production expr -> expr ELOG expr 
+-- On PTV reduce production expr -> expr ELOG expr 
+-- On OULOG reduce production expr -> expr ELOG expr 
+-- On MENOSMENOS reduce production expr -> expr ELOG expr 
+-- On MENOSIGUAL reduce production expr -> expr ELOG expr 
+-- On MAISMAIS reduce production expr -> expr ELOG expr 
+-- On MAISIGUAL reduce production expr -> expr ELOG expr 
+-- On FPAR reduce production expr -> expr ELOG expr 
+-- On ELOG reduce production expr -> expr ELOG expr 
+-- On DPTOS reduce production expr -> expr ELOG expr 
+-- On DIVIGUAL reduce production expr -> expr ELOG expr 
+-- On ATRIB reduce production expr -> expr ELOG expr 
+
+State 69:
+expr -> expr DIFER . expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 70
+-- On exp_fun shift to state 46
+
+State 70:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr DIFER expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZES shift to state 42
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On DIV shift to state 53
+-- On VIRG reduce production expr -> expr DIFER expr 
+-- On VEZESIGUAL reduce production expr -> expr DIFER expr 
+-- On PTV reduce production expr -> expr DIFER expr 
+-- On OULOG reduce production expr -> expr DIFER expr 
+-- On MENOSMENOS reduce production expr -> expr DIFER expr 
+-- On MENOSIGUAL reduce production expr -> expr DIFER expr 
+-- On MAISMAIS reduce production expr -> expr DIFER expr 
+-- On MAISIGUAL reduce production expr -> expr DIFER expr 
+-- On IGUAL reduce production expr -> expr DIFER expr 
+-- On FPAR reduce production expr -> expr DIFER expr 
+-- On ELOG reduce production expr -> expr DIFER expr 
+-- On DPTOS reduce production expr -> expr DIFER expr 
+-- On DIVIGUAL reduce production expr -> expr DIFER expr 
+-- On DIFER reduce production expr -> expr DIFER expr 
+-- On ATRIB reduce production expr -> expr DIFER expr 
+
+State 71:
+expr -> APAR expr FPAR . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> APAR expr FPAR 
+-- On VEZESIGUAL reduce production expr -> APAR expr FPAR 
+-- On VEZES reduce production expr -> APAR expr FPAR 
+-- On PTV reduce production expr -> APAR expr FPAR 
+-- On OULOG reduce production expr -> APAR expr FPAR 
+-- On NOT reduce production expr -> APAR expr FPAR 
+-- On MOD reduce production expr -> APAR expr FPAR 
+-- On MENOSMENOS reduce production expr -> APAR expr FPAR 
+-- On MENOSIGUAL reduce production expr -> APAR expr FPAR 
+-- On MENOS reduce production expr -> APAR expr FPAR 
+-- On MENORIGUAL reduce production expr -> APAR expr FPAR 
+-- On MENOR reduce production expr -> APAR expr FPAR 
+-- On MAISMAIS reduce production expr -> APAR expr FPAR 
+-- On MAISIGUAL reduce production expr -> APAR expr FPAR 
+-- On MAIS reduce production expr -> APAR expr FPAR 
+-- On MAIORIGUAL reduce production expr -> APAR expr FPAR 
+-- On MAIOR reduce production expr -> APAR expr FPAR 
+-- On IGUAL reduce production expr -> APAR expr FPAR 
+-- On FPAR reduce production expr -> APAR expr FPAR 
+-- On ELOG reduce production expr -> APAR expr FPAR 
+-- On DPTOS reduce production expr -> APAR expr FPAR 
+-- On DIVIGUAL reduce production expr -> APAR expr FPAR 
+-- On DIV reduce production expr -> APAR expr FPAR 
+-- On DIFER reduce production expr -> APAR expr FPAR 
+-- On ATRIB reduce production expr -> APAR expr FPAR 
+
+State 72:
+argumentos -> expr . [ FPAR ]
+argumentos -> expr . VIRG argumentos [ FPAR ]
+expr -> expr . MAIS expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VIRG VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VIRG shift to state 73
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On FPAR reduce production argumentos -> expr 
+
+State 73:
+argumentos -> expr VIRG . argumentos [ FPAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 72
+-- On exp_fun shift to state 46
+-- On argumentos shift to state 74
+-- On FPAR reduce production argumentos -> 
+
+State 74:
+argumentos -> expr VIRG argumentos . [ FPAR ]
+-- On FPAR reduce production argumentos -> expr VIRG argumentos 
+
+State 75:
+exp_fun -> ID APAR argumentos . FPAR [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On FPAR shift to state 76
+
+State 76:
+exp_fun -> ID APAR argumentos FPAR . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On VEZESIGUAL reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On VEZES reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On PTV reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On OULOG reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On NOT reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MOD reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MENOSMENOS reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MENOSIGUAL reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MENOS reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MENORIGUAL reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MENOR reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MAISMAIS reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MAISIGUAL reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MAIS reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MAIORIGUAL reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On MAIOR reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On IGUAL reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On FPAR reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On ELOG reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On DPTOS reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On DIVIGUAL reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On DIV reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On DIFER reduce production exp_fun -> ID APAR argumentos FPAR 
+-- On ATRIB reduce production exp_fun -> ID APAR argumentos FPAR 
+
+State 77:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> MENOS expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On VIRG reduce production expr -> MENOS expr 
+-- On VEZESIGUAL reduce production expr -> MENOS expr 
+-- On VEZES reduce production expr -> MENOS expr 
+-- On PTV reduce production expr -> MENOS expr 
+-- On OULOG reduce production expr -> MENOS expr 
+-- On NOT reduce production expr -> MENOS expr 
+-- On MOD reduce production expr -> MENOS expr 
+-- On MENOSMENOS reduce production expr -> MENOS expr 
+-- On MENOSIGUAL reduce production expr -> MENOS expr 
+-- On MENOS reduce production expr -> MENOS expr 
+-- On MENORIGUAL reduce production expr -> MENOS expr 
+-- On MENOR reduce production expr -> MENOS expr 
+-- On MAISMAIS reduce production expr -> MENOS expr 
+-- On MAISIGUAL reduce production expr -> MENOS expr 
+-- On MAIS reduce production expr -> MENOS expr 
+-- On MAIORIGUAL reduce production expr -> MENOS expr 
+-- On MAIOR reduce production expr -> MENOS expr 
+-- On IGUAL reduce production expr -> MENOS expr 
+-- On FPAR reduce production expr -> MENOS expr 
+-- On ELOG reduce production expr -> MENOS expr 
+-- On DPTOS reduce production expr -> MENOS expr 
+-- On DIVIGUAL reduce production expr -> MENOS expr 
+-- On DIV reduce production expr -> MENOS expr 
+-- On DIFER reduce production expr -> MENOS expr 
+-- On ATRIB reduce production expr -> MENOS expr 
+
+State 78:
+expr -> expr . MAIS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+expr -> NOT expr . [ VIRG VEZESIGUAL VEZES PTV OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DPTOS DIVIGUAL DIV DIFER ATRIB ]
+-- On NOT shift to state 44
+-- On VIRG reduce production expr -> NOT expr 
+-- On VEZESIGUAL reduce production expr -> NOT expr 
+-- On VEZES reduce production expr -> NOT expr 
+-- On PTV reduce production expr -> NOT expr 
+-- On OULOG reduce production expr -> NOT expr 
+-- On MOD reduce production expr -> NOT expr 
+-- On MENOSMENOS reduce production expr -> NOT expr 
+-- On MENOSIGUAL reduce production expr -> NOT expr 
+-- On MENOS reduce production expr -> NOT expr 
+-- On MENORIGUAL reduce production expr -> NOT expr 
+-- On MENOR reduce production expr -> NOT expr 
+-- On MAISMAIS reduce production expr -> NOT expr 
+-- On MAISIGUAL reduce production expr -> NOT expr 
+-- On MAIS reduce production expr -> NOT expr 
+-- On MAIORIGUAL reduce production expr -> NOT expr 
+-- On MAIOR reduce production expr -> NOT expr 
+-- On IGUAL reduce production expr -> NOT expr 
+-- On FPAR reduce production expr -> NOT expr 
+-- On ELOG reduce production expr -> NOT expr 
+-- On DPTOS reduce production expr -> NOT expr 
+-- On DIVIGUAL reduce production expr -> NOT expr 
+-- On DIV reduce production expr -> NOT expr 
+-- On DIFER reduce production expr -> NOT expr 
+-- On ATRIB reduce production expr -> NOT expr 
+
+State 79:
+cmd_while -> WHILE APAR expr . FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+expr -> expr . MAIS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On FPAR shift to state 80
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+
+State 80:
+cmd_while -> WHILE APAR expr FPAR . ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On ACHAVE shift to state 81
+
+State 81:
+cmd_while -> WHILE APAR expr FPAR ACHAVE . comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 162
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+
+State 82:
+cmd_switch -> SWITCH . APAR expr FPAR ACHAVE cases default FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On APAR shift to state 83
+
+State 83:
+cmd_switch -> SWITCH APAR . expr FPAR ACHAVE cases default FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 84
+-- On exp_fun shift to state 46
+
+State 84:
+cmd_switch -> SWITCH APAR expr . FPAR ACHAVE cases default FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+expr -> expr . MAIS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On FPAR shift to state 85
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+
+State 85:
+cmd_switch -> SWITCH APAR expr FPAR . ACHAVE cases default FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On ACHAVE shift to state 86
+
+State 86:
+cmd_switch -> SWITCH APAR expr FPAR ACHAVE . cases default FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On CASE shift to state 87
+-- On cases shift to state 152
+-- On case shift to state 160
+-- On FCHAVE reduce production cases -> 
+-- On DEFAULT reduce production cases -> 
+
+State 87:
+case -> CASE . expr DPTOS comandos BREAK PTV [ FCHAVE DEFAULT CASE ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 88
+-- On exp_fun shift to state 46
+
+State 88:
+case -> CASE expr . DPTOS comandos BREAK PTV [ FCHAVE DEFAULT CASE ]
+expr -> expr . MAIS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . NOT expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . MOD expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . DIV expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DPTOS DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DPTOS shift to state 89
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+
+State 89:
+case -> CASE expr DPTOS . comandos BREAK PTV [ FCHAVE DEFAULT CASE ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 149
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On BREAK reduce production comandos -> 
+
+State 90:
+cmd_return -> RETURN . expr [ PTV FPAR ]
+cmd_return -> RETURN . [ PTV FPAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 91
+-- On exp_fun shift to state 46
+-- On PTV reduce production cmd_return -> RETURN 
+-- On FPAR reduce production cmd_return -> RETURN 
+
+State 91:
+cmd_return -> RETURN expr . [ PTV FPAR ]
+expr -> expr . MAIS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On PTV reduce production cmd_return -> RETURN expr 
+-- On FPAR reduce production cmd_return -> RETURN expr 
+
+State 92:
+comando_s -> PRINT . APAR argumentos FPAR [ PTV FPAR ]
+-- On APAR shift to state 93
+
+State 93:
+comando_s -> PRINT APAR . argumentos FPAR [ PTV FPAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 72
+-- On exp_fun shift to state 46
+-- On argumentos shift to state 94
+-- On FPAR reduce production argumentos -> 
+
+State 94:
+comando_s -> PRINT APAR argumentos . FPAR [ PTV FPAR ]
+-- On FPAR shift to state 95
+
+State 95:
+comando_s -> PRINT APAR argumentos FPAR . [ PTV FPAR ]
+-- On PTV reduce production comando_s -> PRINT APAR argumentos FPAR 
+-- On FPAR reduce production comando_s -> PRINT APAR argumentos FPAR 
+
+State 96:
+cmd_if -> IF . APAR expr FPAR ACHAVE comandos FCHAVE parte_else [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On APAR shift to state 97
+
+State 97:
+cmd_if -> IF APAR . expr FPAR ACHAVE comandos FCHAVE parte_else [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 98
+-- On exp_fun shift to state 46
+
+State 98:
+cmd_if -> IF APAR expr . FPAR ACHAVE comandos FCHAVE parte_else [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+expr -> expr . MAIS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On FPAR shift to state 99
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+
+State 99:
+cmd_if -> IF APAR expr FPAR . ACHAVE comandos FCHAVE parte_else [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On ACHAVE shift to state 100
+
+State 100:
+cmd_if -> IF APAR expr FPAR ACHAVE . comandos FCHAVE parte_else [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 141
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+
+State 101:
+cmd_for -> FOR . APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On APAR shift to state 102
+
+State 102:
+cmd_for -> FOR APAR . comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comando_s shift to state 121
+-- On cmd_return shift to state 137
+-- On cmd_atrib shift to state 140
+
+State 103:
+cmd_atrib -> expr . ATRIB expr [ PTV FPAR ]
+cmd_atrib -> expr . MAISIGUAL expr [ PTV FPAR ]
+cmd_atrib -> expr . MENOSIGUAL expr [ PTV FPAR ]
+cmd_atrib -> expr . VEZESIGUAL expr [ PTV FPAR ]
+cmd_atrib -> expr . DIVIGUAL expr [ PTV FPAR ]
+cmd_atrib -> expr . MAISMAIS [ PTV FPAR ]
+cmd_atrib -> expr . MENOSMENOS [ PTV FPAR ]
+comando_s -> expr . ATRIB READINT [ PTV FPAR ]
+comando_s -> expr . ATRIB READFLOAT [ PTV FPAR ]
+comando_s -> expr . ATRIB READSTRING [ PTV FPAR ]
+comando_s -> expr . ATRIB READCHAR [ PTV FPAR ]
+expr -> expr . MAIS expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOS expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . IGUAL expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIFER expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIOR expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENOR expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MAIORIGUAL expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MENORIGUAL expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . ELOG expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . OULOG expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . NOT expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . MOD expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . DIV expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+expr -> expr . VEZES expr [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZESIGUAL shift to state 104
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOSMENOS shift to state 106
+-- On MENOSIGUAL shift to state 107
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAISMAIS shift to state 109
+-- On MAISIGUAL shift to state 110
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIVIGUAL shift to state 112
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On ATRIB shift to state 114
+
+State 104:
+cmd_atrib -> expr VEZESIGUAL . expr [ PTV FPAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 105
+-- On exp_fun shift to state 46
+
+State 105:
+cmd_atrib -> expr VEZESIGUAL expr . [ PTV FPAR ]
+expr -> expr . MAIS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On PTV reduce production cmd_atrib -> expr VEZESIGUAL expr 
+-- On FPAR reduce production cmd_atrib -> expr VEZESIGUAL expr 
+
+State 106:
+cmd_atrib -> expr MENOSMENOS . [ PTV FPAR ]
+-- On PTV reduce production cmd_atrib -> expr MENOSMENOS 
+-- On FPAR reduce production cmd_atrib -> expr MENOSMENOS 
+
+State 107:
+cmd_atrib -> expr MENOSIGUAL . expr [ PTV FPAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 108
+-- On exp_fun shift to state 46
+
+State 108:
+cmd_atrib -> expr MENOSIGUAL expr . [ PTV FPAR ]
+expr -> expr . MAIS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On PTV reduce production cmd_atrib -> expr MENOSIGUAL expr 
+-- On FPAR reduce production cmd_atrib -> expr MENOSIGUAL expr 
+
+State 109:
+cmd_atrib -> expr MAISMAIS . [ PTV FPAR ]
+-- On PTV reduce production cmd_atrib -> expr MAISMAIS 
+-- On FPAR reduce production cmd_atrib -> expr MAISMAIS 
+
+State 110:
+cmd_atrib -> expr MAISIGUAL . expr [ PTV FPAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 111
+-- On exp_fun shift to state 46
+
+State 111:
+cmd_atrib -> expr MAISIGUAL expr . [ PTV FPAR ]
+expr -> expr . MAIS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On PTV reduce production cmd_atrib -> expr MAISIGUAL expr 
+-- On FPAR reduce production cmd_atrib -> expr MAISIGUAL expr 
+
+State 112:
+cmd_atrib -> expr DIVIGUAL . expr [ PTV FPAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 113
+-- On exp_fun shift to state 46
+
+State 113:
+cmd_atrib -> expr DIVIGUAL expr . [ PTV FPAR ]
+expr -> expr . MAIS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On PTV reduce production cmd_atrib -> expr DIVIGUAL expr 
+-- On FPAR reduce production cmd_atrib -> expr DIVIGUAL expr 
+
+State 114:
+cmd_atrib -> expr ATRIB . expr [ PTV FPAR ]
+comando_s -> expr ATRIB . READINT [ PTV FPAR ]
+comando_s -> expr ATRIB . READFLOAT [ PTV FPAR ]
+comando_s -> expr ATRIB . READSTRING [ PTV FPAR ]
+comando_s -> expr ATRIB . READCHAR [ PTV FPAR ]
+-- On READSTRING shift to state 115
+-- On READINT shift to state 116
+-- On READFLOAT shift to state 117
+-- On READCHAR shift to state 118
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 119
+-- On exp_fun shift to state 46
+
+State 115:
+comando_s -> expr ATRIB READSTRING . [ PTV FPAR ]
+-- On PTV reduce production comando_s -> expr ATRIB READSTRING 
+-- On FPAR reduce production comando_s -> expr ATRIB READSTRING 
+
+State 116:
+comando_s -> expr ATRIB READINT . [ PTV FPAR ]
+-- On PTV reduce production comando_s -> expr ATRIB READINT 
+-- On FPAR reduce production comando_s -> expr ATRIB READINT 
+
+State 117:
+comando_s -> expr ATRIB READFLOAT . [ PTV FPAR ]
+-- On PTV reduce production comando_s -> expr ATRIB READFLOAT 
+-- On FPAR reduce production comando_s -> expr ATRIB READFLOAT 
+
+State 118:
+comando_s -> expr ATRIB READCHAR . [ PTV FPAR ]
+-- On PTV reduce production comando_s -> expr ATRIB READCHAR 
+-- On FPAR reduce production comando_s -> expr ATRIB READCHAR 
+
+State 119:
+cmd_atrib -> expr ATRIB expr . [ PTV FPAR ]
+expr -> expr . MAIS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL FPAR ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+-- On PTV reduce production cmd_atrib -> expr ATRIB expr 
+-- On FPAR reduce production cmd_atrib -> expr ATRIB expr 
+
+State 120:
+comando_s -> exp_fun . [ PTV FPAR ]
+expr -> exp_fun . [ VEZESIGUAL VEZES OULOG NOT MOD MENOSMENOS MENOSIGUAL MENOS MENORIGUAL MENOR MAISMAIS MAISIGUAL MAIS MAIORIGUAL MAIOR IGUAL ELOG DIVIGUAL DIV DIFER ATRIB ]
+-- On VEZESIGUAL reduce production expr -> exp_fun 
+-- On VEZES reduce production expr -> exp_fun 
+-- On PTV reduce production comando_s -> exp_fun 
+-- On OULOG reduce production expr -> exp_fun 
+-- On NOT reduce production expr -> exp_fun 
+-- On MOD reduce production expr -> exp_fun 
+-- On MENOSMENOS reduce production expr -> exp_fun 
+-- On MENOSIGUAL reduce production expr -> exp_fun 
+-- On MENOS reduce production expr -> exp_fun 
+-- On MENORIGUAL reduce production expr -> exp_fun 
+-- On MENOR reduce production expr -> exp_fun 
+-- On MAISMAIS reduce production expr -> exp_fun 
+-- On MAISIGUAL reduce production expr -> exp_fun 
+-- On MAIS reduce production expr -> exp_fun 
+-- On MAIORIGUAL reduce production expr -> exp_fun 
+-- On MAIOR reduce production expr -> exp_fun 
+-- On IGUAL reduce production expr -> exp_fun 
+-- On FPAR reduce production comando_s -> exp_fun 
+-- On ELOG reduce production expr -> exp_fun 
+-- On DIVIGUAL reduce production expr -> exp_fun 
+-- On DIV reduce production expr -> exp_fun 
+-- On DIFER reduce production expr -> exp_fun 
+-- On ATRIB reduce production expr -> exp_fun 
+
+State 121:
+cmd_for -> FOR APAR comando_s . PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On PTV shift to state 122
+
+State 122:
+cmd_for -> FOR APAR comando_s PTV . expr PTV comando_s FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 123
+-- On exp_fun shift to state 46
+
+State 123:
+cmd_for -> FOR APAR comando_s PTV expr . PTV comando_s FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+expr -> expr . MAIS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . MENOS expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . IGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . DIFER expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . MAIOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . MENOR expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . MAIORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . MENORIGUAL expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . ELOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . OULOG expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . NOT expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . MOD expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . DIV expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+expr -> expr . VEZES expr [ VEZES PTV OULOG NOT MOD MENOS MENORIGUAL MENOR MAIS MAIORIGUAL MAIOR IGUAL ELOG DIV DIFER ]
+-- On VEZES shift to state 42
+-- On PTV shift to state 124
+-- On OULOG shift to state 47
+-- On NOT shift to state 44
+-- On MOD shift to state 49
+-- On MENOS shift to state 51
+-- On MENORIGUAL shift to state 55
+-- On MENOR shift to state 59
+-- On MAIS shift to state 57
+-- On MAIORIGUAL shift to state 61
+-- On MAIOR shift to state 63
+-- On IGUAL shift to state 65
+-- On ELOG shift to state 67
+-- On DIV shift to state 53
+-- On DIFER shift to state 69
+
+State 124:
+cmd_for -> FOR APAR comando_s PTV expr PTV . comando_s FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On ID shift to state 37
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comando_s shift to state 125
+-- On cmd_return shift to state 137
+-- On cmd_atrib shift to state 140
+
+State 125:
+cmd_for -> FOR APAR comando_s PTV expr PTV comando_s . FPAR ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On FPAR shift to state 126
+
+State 126:
+cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR . ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On ACHAVE shift to state 127
+
+State 127:
+cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE . comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 128
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+
+State 128:
+cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos . FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On FCHAVE shift to state 129
+
+State 129:
+cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On SWITCH reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On RETURN reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On PRINT reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On NOT reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On MENOS reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On LITSTRING reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On LITINT reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On LITFLOAT reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On LITCHAR reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On LITBOOL reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On IF reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On ID reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On FOR reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On FCHAVE reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On BREAK reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+-- On APAR reduce production cmd_for -> FOR APAR comando_s PTV expr PTV comando_s FPAR ACHAVE comandos FCHAVE 
+
+State 130:
+comando -> comando_s . PTV [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On PTV shift to state 131
+
+State 131:
+comando -> comando_s PTV . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production comando -> comando_s PTV 
+-- On SWITCH reduce production comando -> comando_s PTV 
+-- On RETURN reduce production comando -> comando_s PTV 
+-- On PRINT reduce production comando -> comando_s PTV 
+-- On NOT reduce production comando -> comando_s PTV 
+-- On MENOS reduce production comando -> comando_s PTV 
+-- On LITSTRING reduce production comando -> comando_s PTV 
+-- On LITINT reduce production comando -> comando_s PTV 
+-- On LITFLOAT reduce production comando -> comando_s PTV 
+-- On LITCHAR reduce production comando -> comando_s PTV 
+-- On LITBOOL reduce production comando -> comando_s PTV 
+-- On IF reduce production comando -> comando_s PTV 
+-- On ID reduce production comando -> comando_s PTV 
+-- On FOR reduce production comando -> comando_s PTV 
+-- On FCHAVE reduce production comando -> comando_s PTV 
+-- On BREAK reduce production comando -> comando_s PTV 
+-- On APAR reduce production comando -> comando_s PTV 
+
+State 132:
+comando -> comando_c . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production comando -> comando_c 
+-- On SWITCH reduce production comando -> comando_c 
+-- On RETURN reduce production comando -> comando_c 
+-- On PRINT reduce production comando -> comando_c 
+-- On NOT reduce production comando -> comando_c 
+-- On MENOS reduce production comando -> comando_c 
+-- On LITSTRING reduce production comando -> comando_c 
+-- On LITINT reduce production comando -> comando_c 
+-- On LITFLOAT reduce production comando -> comando_c 
+-- On LITCHAR reduce production comando -> comando_c 
+-- On LITBOOL reduce production comando -> comando_c 
+-- On IF reduce production comando -> comando_c 
+-- On ID reduce production comando -> comando_c 
+-- On FOR reduce production comando -> comando_c 
+-- On FCHAVE reduce production comando -> comando_c 
+-- On BREAK reduce production comando -> comando_c 
+-- On APAR reduce production comando -> comando_c 
+
+State 133:
+comandos -> comando . comandos [ FCHAVE BREAK ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 134
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+-- On BREAK reduce production comandos -> 
+
+State 134:
+comandos -> comando comandos . [ FCHAVE BREAK ]
+-- On FCHAVE reduce production comandos -> comando comandos 
+-- On BREAK reduce production comandos -> comando comandos 
+
+State 135:
+comando_c -> cmd_while . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production comando_c -> cmd_while 
+-- On SWITCH reduce production comando_c -> cmd_while 
+-- On RETURN reduce production comando_c -> cmd_while 
+-- On PRINT reduce production comando_c -> cmd_while 
+-- On NOT reduce production comando_c -> cmd_while 
+-- On MENOS reduce production comando_c -> cmd_while 
+-- On LITSTRING reduce production comando_c -> cmd_while 
+-- On LITINT reduce production comando_c -> cmd_while 
+-- On LITFLOAT reduce production comando_c -> cmd_while 
+-- On LITCHAR reduce production comando_c -> cmd_while 
+-- On LITBOOL reduce production comando_c -> cmd_while 
+-- On IF reduce production comando_c -> cmd_while 
+-- On ID reduce production comando_c -> cmd_while 
+-- On FOR reduce production comando_c -> cmd_while 
+-- On FCHAVE reduce production comando_c -> cmd_while 
+-- On BREAK reduce production comando_c -> cmd_while 
+-- On APAR reduce production comando_c -> cmd_while 
+
+State 136:
+comando_c -> cmd_switch . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production comando_c -> cmd_switch 
+-- On SWITCH reduce production comando_c -> cmd_switch 
+-- On RETURN reduce production comando_c -> cmd_switch 
+-- On PRINT reduce production comando_c -> cmd_switch 
+-- On NOT reduce production comando_c -> cmd_switch 
+-- On MENOS reduce production comando_c -> cmd_switch 
+-- On LITSTRING reduce production comando_c -> cmd_switch 
+-- On LITINT reduce production comando_c -> cmd_switch 
+-- On LITFLOAT reduce production comando_c -> cmd_switch 
+-- On LITCHAR reduce production comando_c -> cmd_switch 
+-- On LITBOOL reduce production comando_c -> cmd_switch 
+-- On IF reduce production comando_c -> cmd_switch 
+-- On ID reduce production comando_c -> cmd_switch 
+-- On FOR reduce production comando_c -> cmd_switch 
+-- On FCHAVE reduce production comando_c -> cmd_switch 
+-- On BREAK reduce production comando_c -> cmd_switch 
+-- On APAR reduce production comando_c -> cmd_switch 
+
+State 137:
+comando_s -> cmd_return . [ PTV FPAR ]
+-- On PTV reduce production comando_s -> cmd_return 
+-- On FPAR reduce production comando_s -> cmd_return 
+
+State 138:
+comando_c -> cmd_if . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production comando_c -> cmd_if 
+-- On SWITCH reduce production comando_c -> cmd_if 
+-- On RETURN reduce production comando_c -> cmd_if 
+-- On PRINT reduce production comando_c -> cmd_if 
+-- On NOT reduce production comando_c -> cmd_if 
+-- On MENOS reduce production comando_c -> cmd_if 
+-- On LITSTRING reduce production comando_c -> cmd_if 
+-- On LITINT reduce production comando_c -> cmd_if 
+-- On LITFLOAT reduce production comando_c -> cmd_if 
+-- On LITCHAR reduce production comando_c -> cmd_if 
+-- On LITBOOL reduce production comando_c -> cmd_if 
+-- On IF reduce production comando_c -> cmd_if 
+-- On ID reduce production comando_c -> cmd_if 
+-- On FOR reduce production comando_c -> cmd_if 
+-- On FCHAVE reduce production comando_c -> cmd_if 
+-- On BREAK reduce production comando_c -> cmd_if 
+-- On APAR reduce production comando_c -> cmd_if 
+
+State 139:
+comando_c -> cmd_for . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production comando_c -> cmd_for 
+-- On SWITCH reduce production comando_c -> cmd_for 
+-- On RETURN reduce production comando_c -> cmd_for 
+-- On PRINT reduce production comando_c -> cmd_for 
+-- On NOT reduce production comando_c -> cmd_for 
+-- On MENOS reduce production comando_c -> cmd_for 
+-- On LITSTRING reduce production comando_c -> cmd_for 
+-- On LITINT reduce production comando_c -> cmd_for 
+-- On LITFLOAT reduce production comando_c -> cmd_for 
+-- On LITCHAR reduce production comando_c -> cmd_for 
+-- On LITBOOL reduce production comando_c -> cmd_for 
+-- On IF reduce production comando_c -> cmd_for 
+-- On ID reduce production comando_c -> cmd_for 
+-- On FOR reduce production comando_c -> cmd_for 
+-- On FCHAVE reduce production comando_c -> cmd_for 
+-- On BREAK reduce production comando_c -> cmd_for 
+-- On APAR reduce production comando_c -> cmd_for 
+
+State 140:
+comando_s -> cmd_atrib . [ PTV FPAR ]
+-- On PTV reduce production comando_s -> cmd_atrib 
+-- On FPAR reduce production comando_s -> cmd_atrib 
+
+State 141:
+cmd_if -> IF APAR expr FPAR ACHAVE comandos . FCHAVE parte_else [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On FCHAVE shift to state 142
+
+State 142:
+cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE . parte_else [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On ELSE shift to state 143
+-- On parte_else shift to state 148
+-- On WHILE reduce production parte_else -> 
+-- On SWITCH reduce production parte_else -> 
+-- On RETURN reduce production parte_else -> 
+-- On PRINT reduce production parte_else -> 
+-- On NOT reduce production parte_else -> 
+-- On MENOS reduce production parte_else -> 
+-- On LITSTRING reduce production parte_else -> 
+-- On LITINT reduce production parte_else -> 
+-- On LITFLOAT reduce production parte_else -> 
+-- On LITCHAR reduce production parte_else -> 
+-- On LITBOOL reduce production parte_else -> 
+-- On IF reduce production parte_else -> 
+-- On ID reduce production parte_else -> 
+-- On FOR reduce production parte_else -> 
+-- On FCHAVE reduce production parte_else -> 
+-- On BREAK reduce production parte_else -> 
+-- On APAR reduce production parte_else -> 
+
+State 143:
+parte_else -> ELSE . ACHAVE comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+parte_else -> ELSE . cmd_if [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On IF shift to state 96
+-- On ACHAVE shift to state 144
+-- On cmd_if shift to state 147
+
+State 144:
+parte_else -> ELSE ACHAVE . comandos FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 145
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+
+State 145:
+parte_else -> ELSE ACHAVE comandos . FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On FCHAVE shift to state 146
+
+State 146:
+parte_else -> ELSE ACHAVE comandos FCHAVE . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On SWITCH reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On RETURN reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On PRINT reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On NOT reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On MENOS reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On LITSTRING reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On LITINT reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On LITFLOAT reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On LITCHAR reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On LITBOOL reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On IF reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On ID reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On FOR reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On FCHAVE reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On BREAK reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+-- On APAR reduce production parte_else -> ELSE ACHAVE comandos FCHAVE 
+
+State 147:
+parte_else -> ELSE cmd_if . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production parte_else -> ELSE cmd_if 
+-- On SWITCH reduce production parte_else -> ELSE cmd_if 
+-- On RETURN reduce production parte_else -> ELSE cmd_if 
+-- On PRINT reduce production parte_else -> ELSE cmd_if 
+-- On NOT reduce production parte_else -> ELSE cmd_if 
+-- On MENOS reduce production parte_else -> ELSE cmd_if 
+-- On LITSTRING reduce production parte_else -> ELSE cmd_if 
+-- On LITINT reduce production parte_else -> ELSE cmd_if 
+-- On LITFLOAT reduce production parte_else -> ELSE cmd_if 
+-- On LITCHAR reduce production parte_else -> ELSE cmd_if 
+-- On LITBOOL reduce production parte_else -> ELSE cmd_if 
+-- On IF reduce production parte_else -> ELSE cmd_if 
+-- On ID reduce production parte_else -> ELSE cmd_if 
+-- On FOR reduce production parte_else -> ELSE cmd_if 
+-- On FCHAVE reduce production parte_else -> ELSE cmd_if 
+-- On BREAK reduce production parte_else -> ELSE cmd_if 
+-- On APAR reduce production parte_else -> ELSE cmd_if 
+
+State 148:
+cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On SWITCH reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On RETURN reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On PRINT reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On NOT reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On MENOS reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On LITSTRING reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On LITINT reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On LITFLOAT reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On LITCHAR reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On LITBOOL reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On IF reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On ID reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On FOR reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On FCHAVE reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On BREAK reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+-- On APAR reduce production cmd_if -> IF APAR expr FPAR ACHAVE comandos FCHAVE parte_else 
+
+State 149:
+case -> CASE expr DPTOS comandos . BREAK PTV [ FCHAVE DEFAULT CASE ]
+-- On BREAK shift to state 150
+
+State 150:
+case -> CASE expr DPTOS comandos BREAK . PTV [ FCHAVE DEFAULT CASE ]
+-- On PTV shift to state 151
+
+State 151:
+case -> CASE expr DPTOS comandos BREAK PTV . [ FCHAVE DEFAULT CASE ]
+-- On FCHAVE reduce production case -> CASE expr DPTOS comandos BREAK PTV 
+-- On DEFAULT reduce production case -> CASE expr DPTOS comandos BREAK PTV 
+-- On CASE reduce production case -> CASE expr DPTOS comandos BREAK PTV 
+
+State 152:
+cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases . default FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On DEFAULT shift to state 153
+-- On default shift to state 158
+-- On FCHAVE reduce production default -> 
+
+State 153:
+default -> DEFAULT . DPTOS comandos BREAK PTV [ FCHAVE ]
+default -> DEFAULT . DPTOS comandos [ FCHAVE ]
+-- On DPTOS shift to state 154
+
+State 154:
+default -> DEFAULT DPTOS . comandos BREAK PTV [ FCHAVE ]
+default -> DEFAULT DPTOS . comandos [ FCHAVE ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 155
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+-- On BREAK reduce production comandos -> 
+
+State 155:
+default -> DEFAULT DPTOS comandos . BREAK PTV [ FCHAVE ]
+default -> DEFAULT DPTOS comandos . [ FCHAVE ]
+-- On BREAK shift to state 156
+-- On FCHAVE reduce production default -> DEFAULT DPTOS comandos 
+
+State 156:
+default -> DEFAULT DPTOS comandos BREAK . PTV [ FCHAVE ]
+-- On PTV shift to state 157
+
+State 157:
+default -> DEFAULT DPTOS comandos BREAK PTV . [ FCHAVE ]
+-- On FCHAVE reduce production default -> DEFAULT DPTOS comandos BREAK PTV 
+
+State 158:
+cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default . FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On FCHAVE shift to state 159
+
+State 159:
+cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On SWITCH reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On RETURN reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On PRINT reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On NOT reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On MENOS reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On LITSTRING reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On LITINT reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On LITFLOAT reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On LITCHAR reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On LITBOOL reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On IF reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On ID reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On FOR reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On FCHAVE reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On BREAK reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+-- On APAR reduce production cmd_switch -> SWITCH APAR expr FPAR ACHAVE cases default FCHAVE 
+
+State 160:
+cases -> case . cases [ FCHAVE DEFAULT ]
+-- On CASE shift to state 87
+-- On cases shift to state 161
+-- On case shift to state 160
+-- On FCHAVE reduce production cases -> 
+-- On DEFAULT reduce production cases -> 
+
+State 161:
+cases -> case cases . [ FCHAVE DEFAULT ]
+-- On FCHAVE reduce production cases -> case cases 
+-- On DEFAULT reduce production cases -> case cases 
+
+State 162:
+cmd_while -> WHILE APAR expr FPAR ACHAVE comandos . FCHAVE [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On FCHAVE shift to state 163
+
+State 163:
+cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE BREAK APAR ]
+-- On WHILE reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On SWITCH reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On RETURN reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On PRINT reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On NOT reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On MENOS reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On LITSTRING reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On LITINT reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On LITFLOAT reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On LITCHAR reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On LITBOOL reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On IF reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On ID reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On FOR reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On FCHAVE reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On BREAK reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+-- On APAR reduce production cmd_while -> WHILE APAR expr FPAR ACHAVE comandos FCHAVE 
+
+State 164:
+funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR ACHAVE list(declaracao) comandos . FCHAVE [ PUBLIC MAIN FCHAVE ]
+-- On FCHAVE shift to state 165
+
+State 165:
+funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE . [ PUBLIC MAIN FCHAVE ]
+-- On PUBLIC reduce production funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE 
+-- On MAIN reduce production funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE 
+-- On FCHAVE reduce production funcao -> PUBLIC STATIC tipo ID APAR parametros FPAR ACHAVE list(declaracao) comandos FCHAVE 
+
+State 166:
+list(declaracao) -> declaracao . list(declaracao) [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE APAR ]
+-- On VOID shift to state 7
+-- On STRING shift to state 8
+-- On INT shift to state 9
+-- On FLOAT shift to state 10
+-- On CHAR shift to state 11
+-- On BOOLEAN shift to state 12
+-- On tipo shift to state 21
+-- On list(declaracao) shift to state 167
+-- On declaracao shift to state 166
+-- On WHILE reduce production list(declaracao) -> 
+-- On SWITCH reduce production list(declaracao) -> 
+-- On RETURN reduce production list(declaracao) -> 
+-- On PRINT reduce production list(declaracao) -> 
+-- On NOT reduce production list(declaracao) -> 
+-- On MENOS reduce production list(declaracao) -> 
+-- On LITSTRING reduce production list(declaracao) -> 
+-- On LITINT reduce production list(declaracao) -> 
+-- On LITFLOAT reduce production list(declaracao) -> 
+-- On LITCHAR reduce production list(declaracao) -> 
+-- On LITBOOL reduce production list(declaracao) -> 
+-- On IF reduce production list(declaracao) -> 
+-- On ID reduce production list(declaracao) -> 
+-- On FOR reduce production list(declaracao) -> 
+-- On FCHAVE reduce production list(declaracao) -> 
+-- On APAR reduce production list(declaracao) -> 
+
+State 167:
+list(declaracao) -> declaracao list(declaracao) . [ WHILE SWITCH RETURN PRINT NOT MENOS LITSTRING LITINT LITFLOAT LITCHAR LITBOOL IF ID FOR FCHAVE APAR ]
+-- On WHILE reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On SWITCH reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On RETURN reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On PRINT reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On NOT reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On MENOS reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On LITSTRING reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On LITINT reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On LITFLOAT reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On LITCHAR reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On LITBOOL reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On IF reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On ID reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On FOR reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On FCHAVE reduce production list(declaracao) -> declaracao list(declaracao) 
+-- On APAR reduce production list(declaracao) -> declaracao list(declaracao) 
+
+State 168:
+parametros -> parametro . [ FPAR ]
+parametros -> parametro . VIRG parametros [ FPAR ]
+-- On VIRG shift to state 169
+-- On FPAR reduce production parametros -> parametro 
+
+State 169:
+parametros -> parametro VIRG . parametros [ FPAR ]
+-- On VOID shift to state 7
+-- On STRING shift to state 8
+-- On INT shift to state 9
+-- On FLOAT shift to state 10
+-- On CHAR shift to state 11
+-- On BOOLEAN shift to state 12
+-- On tipo shift to state 16
+-- On parametros shift to state 170
+-- On parametro shift to state 168
+-- On FPAR reduce production parametros -> 
+
+State 170:
+parametros -> parametro VIRG parametros . [ FPAR ]
+-- On FPAR reduce production parametros -> parametro VIRG parametros 
+
+State 171:
+programa -> PUBLIC CLASS ID ACHAVE funcoes . MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On MAIN shift to state 172
+
+State 172:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN . ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On ACHAVE shift to state 173
+
+State 173:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE . list(declaracao) comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On VOID shift to state 7
+-- On STRING shift to state 8
+-- On INT shift to state 9
+-- On FLOAT shift to state 10
+-- On CHAR shift to state 11
+-- On BOOLEAN shift to state 12
+-- On tipo shift to state 21
+-- On list(declaracao) shift to state 174
+-- On declaracao shift to state 166
+-- On WHILE reduce production list(declaracao) -> 
+-- On SWITCH reduce production list(declaracao) -> 
+-- On RETURN reduce production list(declaracao) -> 
+-- On PRINT reduce production list(declaracao) -> 
+-- On NOT reduce production list(declaracao) -> 
+-- On MENOS reduce production list(declaracao) -> 
+-- On LITSTRING reduce production list(declaracao) -> 
+-- On LITINT reduce production list(declaracao) -> 
+-- On LITFLOAT reduce production list(declaracao) -> 
+-- On LITCHAR reduce production list(declaracao) -> 
+-- On LITBOOL reduce production list(declaracao) -> 
+-- On IF reduce production list(declaracao) -> 
+-- On ID reduce production list(declaracao) -> 
+-- On FOR reduce production list(declaracao) -> 
+-- On FCHAVE reduce production list(declaracao) -> 
+-- On APAR reduce production list(declaracao) -> 
+
+State 174:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) . comandos FCHAVE funcoes FCHAVE EOF [ # ]
+-- On WHILE shift to state 28
+-- On SWITCH shift to state 82
+-- On RETURN shift to state 90
+-- On PRINT shift to state 92
+-- On NOT shift to state 30
+-- On MENOS shift to state 31
+-- On LITSTRING shift to state 32
+-- On LITINT shift to state 33
+-- On LITFLOAT shift to state 34
+-- On LITCHAR shift to state 35
+-- On LITBOOL shift to state 36
+-- On IF shift to state 96
+-- On ID shift to state 37
+-- On FOR shift to state 101
+-- On APAR shift to state 39
+-- On variavel shift to state 40
+-- On expr shift to state 103
+-- On exp_fun shift to state 120
+-- On comandos shift to state 175
+-- On comando_s shift to state 130
+-- On comando_c shift to state 132
+-- On comando shift to state 133
+-- On cmd_while shift to state 135
+-- On cmd_switch shift to state 136
+-- On cmd_return shift to state 137
+-- On cmd_if shift to state 138
+-- On cmd_for shift to state 139
+-- On cmd_atrib shift to state 140
+-- On FCHAVE reduce production comandos -> 
+
+State 175:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos . FCHAVE funcoes FCHAVE EOF [ # ]
+-- On FCHAVE shift to state 176
+
+State 176:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE . funcoes FCHAVE EOF [ # ]
+-- On PUBLIC shift to state 5
+-- On funcoes shift to state 177
+-- On funcao shift to state 180
+-- On FCHAVE reduce production funcoes -> 
+
+State 177:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes . FCHAVE EOF [ # ]
+-- On FCHAVE shift to state 178
+
+State 178:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE . EOF [ # ]
+-- On EOF shift to state 179
+
+State 179:
+programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF . [ # ]
+-- On # reduce production programa -> PUBLIC CLASS ID ACHAVE funcoes MAIN ACHAVE list(declaracao) comandos FCHAVE funcoes FCHAVE EOF 
+
+State 180:
+funcoes -> funcao . funcoes [ MAIN FCHAVE ]
+-- On PUBLIC shift to state 5
+-- On funcoes shift to state 181
+-- On funcao shift to state 180
+-- On MAIN reduce production funcoes -> 
+-- On FCHAVE reduce production funcoes -> 
+
+State 181:
+funcoes -> funcao funcoes . [ MAIN FCHAVE ]
+-- On MAIN reduce production funcoes -> funcao funcoes 
+-- On FCHAVE reduce production funcoes -> funcao funcoes 
+
+State 182:
+programa' -> programa . [ # ]
+-- On # accept programa
+
