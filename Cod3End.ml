@@ -155,6 +155,29 @@ let pega_tipo exp =
     | _ -> failwith "pega_tipo: nao implementado"
 
 
+
+let rec converte_if var cases default =
+    match cases with
+    | [] ->
+        let corpo = (match default with
+                     | None -> []
+                     | Some (Default bloco) -> bloco)
+        in
+        CmdIf (ExpBool (true, Bool), corpo, None)
+
+    | Case (expr, corpo) :: cases ->
+        let tipo = pega_tipo var in
+        CmdIf (ExpOp ((Igual, Bool), (var,tipo), (expr,tipo)), corpo, Some [converte_if var cases default])
+
+
+let converte_switch_if cmd =
+    match cmd with
+    | CmdSwitch (var, cases, default) ->
+        converte_if var cases default
+    | _ -> failwith "So aceita comando switch"
+
+
+
 (* Traduz uma expressão para a sua equivalente em código de 3 endereços. *)
 let rec traduz_exp exp =
     match exp with
@@ -164,7 +187,7 @@ let rec traduz_exp exp =
         | VarSimples nome ->
             let id = fst nome in
             (Nome id, [])
-        | _ -> failwith "traduz_exp (expvar): nao implementado")
+        (*| _ -> failwith "traduz_exp (expvar): nao implementado"*))
 
     | ExpInt (n,Int) ->
         (* Para uma expressão inteiro usada fora de uma atribuição (ex: "x=10;")  *)
@@ -323,6 +346,9 @@ let rec traduz_cmd cmd =
         | Some e ->
             let (endr_exp, codigo_exp) = traduz_exp e in
             codigo_exp @ [Return (Some endr_exp)])
+
+    | CmdSwitch (var,cases,default) ->
+        traduz_cmd (converte_if var cases default)
 
     | CmdFun (ExpFun (id, args, tipo_fn)) -> 
         let (enderecos, codigos) = List.split (List.map traduz_exp args) in
