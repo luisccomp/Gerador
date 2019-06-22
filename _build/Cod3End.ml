@@ -165,6 +165,14 @@ let rec converte_if var cases default =
         in
         CmdIf (ExpBool (true, Bool), corpo, None)
 
+    | [Case (expr, corpo)] ->
+        let tipo = pega_tipo var in
+        let bloco = (match default with
+                     | None -> None
+                     | Some (Default bloco) -> Some bloco)
+        in
+        CmdIf (ExpOp ((Igual,Bool),(var,tipo),(expr,tipo)), corpo, bloco)
+
     | Case (expr, corpo) :: cases ->
         let tipo = pega_tipo var in
         CmdIf (ExpOp ((Igual, Bool), (var,tipo), (expr,tipo)), corpo, Some [converte_if var cases default])
