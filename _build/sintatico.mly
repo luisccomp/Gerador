@@ -89,14 +89,17 @@
 
 programa : PUBLIC CLASS ID ACHAVE
            fsa=funcoes
-           MAIN ACHAVE
+           pos=MAIN ACHAVE
                ds=declaracao*
                cs=comandos
            FCHAVE
            fsb=funcoes
            FCHAVE
            EOF
-           { Programa (List.flatten ds, fsa @ fsb, cs) }
+           { Programa ([], fsa @ [DecFun {fn_nome=("fn_main", pos); 
+                                          fn_tiporet=Void; 
+                                          fn_formais=[]; fn_locais=(List.flatten ds); 
+                                          fn_corpo=cs}] @ fsb, [CmdFun (ExpFun (("fn_main",pos), []))]) }
          ;
 
 funcoes :                     { [] }

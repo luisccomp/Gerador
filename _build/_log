@@ -44,7 +44,7 @@ ocamlfind ocamlc -c -package menhirLib -o semantico.cmi semantico.mli # cached
 # Target: Cod3End.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:Cod3End.cmo, file:Cod3End.ml, implem, ocaml, quiet }
 ocamlfind ocamlc -c -package menhirLib -o Cod3End.cmo Cod3End.ml
 # Target: cod3endTest.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:cod3endTest.cmo, file:cod3endTest.ml, implem, ocaml, quiet }
-ocamlfind ocamlc -c -package menhirLib -o cod3endTest.cmo cod3endTest.ml
+ocamlfind ocamlc -c -package menhirLib -o cod3endTest.cmo cod3endTest.ml # cached
 # Target: semantico.ml.depends, tags: { package(menhirLib), extension:ml, file:semantico.ml, ocaml, ocamldep, quiet }
 ocamlfind ocamldep -package menhirLib -modules semantico.ml > semantico.ml.depends # cached
 # Target: semantico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:semantico.cmo, file:semantico.ml, implem, ocaml, quiet }

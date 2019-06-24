@@ -47,7 +47,7 @@ let endr_to_str = function
     | ConstInt i -> string_of_int i
     | ConstFloat f -> string_of_float f
     | ConstBool b -> string_of_bool b
-    | ConstString s -> s
+    | ConstString s -> sprintf "\"%s\"" s
     | ConstChar c -> sprintf "%c" c
     | Temp n -> "t" ^ string_of_int n
 

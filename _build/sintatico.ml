@@ -631,7 +631,7 @@ module Tables = struct
         let _startpos = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _endpos = _startpos in
         let _v : (Sast.expressao Ast.expressoes) = 
-# 180 "sintatico.mly"
+# 183 "sintatico.mly"
                                          ( [] )
 # 637 "sintatico.ml"
          in
@@ -656,7 +656,7 @@ module Tables = struct
         let _startpos = _startpos_e_ in
         let _endpos = _endpos_e_ in
         let _v : (Sast.expressao Ast.expressoes) = 
-# 181 "sintatico.mly"
+# 184 "sintatico.mly"
                                          ( [e] )
 # 662 "sintatico.ml"
          in
@@ -697,7 +697,7 @@ module Tables = struct
         let _startpos = _startpos_e_ in
         let _endpos = _endpos_args_ in
         let _v : (Sast.expressao Ast.expressoes) = 
-# 182 "sintatico.mly"
+# 185 "sintatico.mly"
                                          ( e :: args )
 # 703 "sintatico.ml"
          in
@@ -768,7 +768,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__6_ in
         let _v : (Sast.expressao Ast.case) = 
-# 156 "sintatico.mly"
+# 159 "sintatico.mly"
                                                ( Case (e, cs) )
 # 774 "sintatico.ml"
          in
@@ -786,7 +786,7 @@ module Tables = struct
         let _startpos = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _endpos = _startpos in
         let _v : (Sast.expressao Ast.cases) = 
-# 152 "sintatico.mly"
+# 155 "sintatico.mly"
                         ( [] )
 # 792 "sintatico.ml"
          in
@@ -817,7 +817,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_cs_ in
         let _v : (Sast.expressao Ast.cases) = 
-# 153 "sintatico.mly"
+# 156 "sintatico.mly"
                         ( c :: cs )
 # 823 "sintatico.ml"
          in
@@ -858,7 +858,7 @@ module Tables = struct
         let _startpos = _startpos_ee_ in
         let _endpos = _endpos_ed_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 186 "sintatico.mly"
+# 189 "sintatico.mly"
                                            ( CmdAtrib (ee, ed) )
 # 864 "sintatico.ml"
          in
@@ -899,7 +899,7 @@ module Tables = struct
         let _startpos = _startpos_ee_ in
         let _endpos = _endpos_ed_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 187 "sintatico.mly"
+# 190 "sintatico.mly"
                                            ( CmdAtrib (ee, ExpOp ((Soma, pos), ee, ed)) )
 # 905 "sintatico.ml"
          in
@@ -940,7 +940,7 @@ module Tables = struct
         let _startpos = _startpos_ee_ in
         let _endpos = _endpos_ed_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 188 "sintatico.mly"
+# 191 "sintatico.mly"
                                            ( CmdAtrib (ee, ExpOp ((Sub, pos), ee, ed)) )
 # 946 "sintatico.ml"
          in
@@ -981,7 +981,7 @@ module Tables = struct
         let _startpos = _startpos_ee_ in
         let _endpos = _endpos_ed_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 189 "sintatico.mly"
+# 192 "sintatico.mly"
                                            ( CmdAtrib (ee, ExpOp ((Mult, pos), ee, ed)) )
 # 987 "sintatico.ml"
          in
@@ -1022,7 +1022,7 @@ module Tables = struct
         let _startpos = _startpos_ee_ in
         let _endpos = _endpos_ed_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 190 "sintatico.mly"
+# 193 "sintatico.mly"
                                            ( CmdAtrib (ee, ExpOp ((Div, pos), ee, ed)) )
 # 1028 "sintatico.ml"
          in
@@ -1057,7 +1057,7 @@ module Tables = struct
         let _startpos = _startpos_ee_ in
         let _endpos = _endpos_pos_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 191 "sintatico.mly"
+# 194 "sintatico.mly"
                                            ( CmdAtrib (ee, ExpOp ((Soma, pos), ee, ExpInt (1, pos))) )
 # 1063 "sintatico.ml"
          in
@@ -1092,7 +1092,7 @@ module Tables = struct
         let _startpos = _startpos_ee_ in
         let _endpos = _endpos_pos_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 192 "sintatico.mly"
+# 195 "sintatico.mly"
                                            ( CmdAtrib (ee, ExpOp ((Sub, pos), ee, ExpInt (1, pos))) )
 # 1098 "sintatico.ml"
          in
@@ -1205,7 +1205,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__11_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 143 "sintatico.mly"
+# 146 "sintatico.mly"
                                                                                            ( CmdFor (ci, e, ca, cs) )
 # 1211 "sintatico.ml"
          in
@@ -1292,7 +1292,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos_pe_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 146 "sintatico.mly"
+# 149 "sintatico.mly"
                                                                      ( CmdIf (e, cs, pe) )
 # 1298 "sintatico.ml"
          in
@@ -1327,7 +1327,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos_e_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 196 "sintatico.mly"
+# 199 "sintatico.mly"
                            ( CmdReturn (Some e) )
 # 1333 "sintatico.ml"
          in
@@ -1356,7 +1356,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__1_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 197 "sintatico.mly"
+# 200 "sintatico.mly"
                            ( CmdReturn None )
 # 1362 "sintatico.ml"
          in
@@ -1443,7 +1443,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__8_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 149 "sintatico.mly"
+# 152 "sintatico.mly"
                                                                       ( CmdSwitch (e, cs, d) )
 # 1449 "sintatico.ml"
          in
@@ -1524,7 +1524,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__7_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 140 "sintatico.mly"
+# 143 "sintatico.mly"
                                                              ( CmdWhile (e, cs) )
 # 1530 "sintatico.ml"
          in
@@ -1559,7 +1559,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos__2_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 129 "sintatico.mly"
+# 132 "sintatico.mly"
                           ( c )
 # 1565 "sintatico.ml"
          in
@@ -1584,7 +1584,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 130 "sintatico.mly"
+# 133 "sintatico.mly"
                           ( c )
 # 1590 "sintatico.ml"
          in
@@ -1609,7 +1609,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 134 "sintatico.mly"
+# 137 "sintatico.mly"
                          ( c )
 # 1615 "sintatico.ml"
          in
@@ -1634,7 +1634,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 135 "sintatico.mly"
+# 138 "sintatico.mly"
                          ( c )
 # 1640 "sintatico.ml"
          in
@@ -1659,7 +1659,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 136 "sintatico.mly"
+# 139 "sintatico.mly"
                          ( c )
 # 1665 "sintatico.ml"
          in
@@ -1684,7 +1684,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 137 "sintatico.mly"
+# 140 "sintatico.mly"
                          ( c )
 # 1690 "sintatico.ml"
          in
@@ -1709,7 +1709,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 170 "sintatico.mly"
+# 173 "sintatico.mly"
                                             ( c )
 # 1715 "sintatico.ml"
          in
@@ -1754,7 +1754,7 @@ module Tables = struct
         let _startpos = _startpos_e_ in
         let _endpos = _endpos__3_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 171 "sintatico.mly"
+# 174 "sintatico.mly"
                                             ( CmdReadInt e )
 # 1760 "sintatico.ml"
          in
@@ -1799,7 +1799,7 @@ module Tables = struct
         let _startpos = _startpos_e_ in
         let _endpos = _endpos__3_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 172 "sintatico.mly"
+# 175 "sintatico.mly"
                                             ( CmdReadFloat e )
 # 1805 "sintatico.ml"
          in
@@ -1844,7 +1844,7 @@ module Tables = struct
         let _startpos = _startpos_e_ in
         let _endpos = _endpos__3_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 173 "sintatico.mly"
+# 176 "sintatico.mly"
                                             ( CmdReadString e )
 # 1850 "sintatico.ml"
          in
@@ -1889,7 +1889,7 @@ module Tables = struct
         let _startpos = _startpos_e_ in
         let _endpos = _endpos__3_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 174 "sintatico.mly"
+# 177 "sintatico.mly"
                                             ( CmdReadChar e )
 # 1895 "sintatico.ml"
          in
@@ -1944,7 +1944,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__4_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 175 "sintatico.mly"
+# 178 "sintatico.mly"
                                             ( CmdPrint args )
 # 1950 "sintatico.ml"
          in
@@ -1969,7 +1969,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 176 "sintatico.mly"
+# 179 "sintatico.mly"
                                             ( c )
 # 1975 "sintatico.ml"
          in
@@ -1994,7 +1994,7 @@ module Tables = struct
         let _startpos = _startpos_e_ in
         let _endpos = _endpos_e_ in
         let _v : (Sast.expressao Ast.comando) = 
-# 177 "sintatico.mly"
+# 180 "sintatico.mly"
                                             ( CmdFun e )
 # 2000 "sintatico.ml"
          in
@@ -2012,7 +2012,7 @@ module Tables = struct
         let _startpos = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _endpos = _startpos in
         let _v : (Sast.expressao Ast.comandos) = 
-# 124 "sintatico.mly"
+# 127 "sintatico.mly"
                                  ( [] )
 # 2018 "sintatico.ml"
          in
@@ -2043,7 +2043,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_cs_ in
         let _v : (Sast.expressao Ast.comandos) = 
-# 125 "sintatico.mly"
+# 128 "sintatico.mly"
                                  ( c :: cs )
 # 2049 "sintatico.ml"
          in
@@ -2084,7 +2084,7 @@ module Tables = struct
         let _startpos = _startpos_t_ in
         let _endpos = _endpos__3_ in
         let _v : (Ast.declaracao list) = 
-# 112 "sintatico.mly"
+# 115 "sintatico.mly"
                                                                 ( List.map (fun id -> DecVar (id, t)) ids )
 # 2090 "sintatico.ml"
          in
@@ -2102,7 +2102,7 @@ module Tables = struct
         let _startpos = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _endpos = _startpos in
         let _v : (Sast.expressao Ast.default option) = 
-# 159 "sintatico.mly"
+# 162 "sintatico.mly"
                                              ( None )
 # 2108 "sintatico.ml"
          in
@@ -2167,7 +2167,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__5_ in
         let _v : (Sast.expressao Ast.default option) = 
-# 160 "sintatico.mly"
+# 163 "sintatico.mly"
                                              ( Some (Default cs) )
 # 2173 "sintatico.ml"
          in
@@ -2212,7 +2212,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos_cs_ in
         let _v : (Sast.expressao Ast.default option) = 
-# 161 "sintatico.mly"
+# 164 "sintatico.mly"
                                              ( Some (Default cs) )
 # 2218 "sintatico.ml"
          in
@@ -2267,7 +2267,7 @@ module Tables = struct
         let _startpos = _startpos_x_ in
         let _endpos = _endpos__4_ in
         let _v : (Sast.expressao) = 
-# 216 "sintatico.mly"
+# 219 "sintatico.mly"
                                          ( ExpFun (x, args) )
 # 2273 "sintatico.ml"
          in
@@ -2312,7 +2312,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__3_ in
         let _v : (Sast.expressao) = 
-# 201 "sintatico.mly"
+# 204 "sintatico.mly"
                                      ( e )
 # 2318 "sintatico.ml"
          in
@@ -2337,7 +2337,7 @@ module Tables = struct
         let _startpos = _startpos_v_ in
         let _endpos = _endpos_v_ in
         let _v : (Sast.expressao) = 
-# 202 "sintatico.mly"
+# 205 "sintatico.mly"
                                      ( ExpVar v )
 # 2343 "sintatico.ml"
          in
@@ -2366,7 +2366,7 @@ module Tables = struct
         let _startpos = _startpos_i_ in
         let _endpos = _endpos_i_ in
         let _v : (Sast.expressao) = 
-# 203 "sintatico.mly"
+# 206 "sintatico.mly"
                                      ( ExpInt i )
 # 2372 "sintatico.ml"
          in
@@ -2395,7 +2395,7 @@ module Tables = struct
         let _startpos = _startpos_f_ in
         let _endpos = _endpos_f_ in
         let _v : (Sast.expressao) = 
-# 204 "sintatico.mly"
+# 207 "sintatico.mly"
                                      ( ExpFloat f )
 # 2401 "sintatico.ml"
          in
@@ -2424,7 +2424,7 @@ module Tables = struct
         let _startpos = _startpos_b_ in
         let _endpos = _endpos_b_ in
         let _v : (Sast.expressao) = 
-# 205 "sintatico.mly"
+# 208 "sintatico.mly"
                                      ( ExpBool b )
 # 2430 "sintatico.ml"
          in
@@ -2453,7 +2453,7 @@ module Tables = struct
         let _startpos = _startpos_s_ in
         let _endpos = _endpos_s_ in
         let _v : (Sast.expressao) = 
-# 206 "sintatico.mly"
+# 209 "sintatico.mly"
                                      ( ExpString s )
 # 2459 "sintatico.ml"
          in
@@ -2482,7 +2482,7 @@ module Tables = struct
         let _startpos = _startpos_c_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao) = 
-# 207 "sintatico.mly"
+# 210 "sintatico.mly"
                                      ( ExpChar c )
 # 2488 "sintatico.ml"
          in
@@ -2525,13 +2525,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 220 "sintatico.mly"
+# 223 "sintatico.mly"
                               ( (Soma, pos) )
 # 2531 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2537 "sintatico.ml"
          in
@@ -2574,13 +2574,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 221 "sintatico.mly"
+# 224 "sintatico.mly"
                               ( (Sub, pos) )
 # 2580 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2586 "sintatico.ml"
          in
@@ -2623,13 +2623,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 222 "sintatico.mly"
+# 225 "sintatico.mly"
                               ( (Igual, pos) )
 # 2629 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2635 "sintatico.ml"
          in
@@ -2672,13 +2672,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 223 "sintatico.mly"
+# 226 "sintatico.mly"
                               ( (Difer, pos) )
 # 2678 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2684 "sintatico.ml"
          in
@@ -2721,13 +2721,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 224 "sintatico.mly"
+# 227 "sintatico.mly"
                               ( (Maior, pos) )
 # 2727 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2733 "sintatico.ml"
          in
@@ -2770,13 +2770,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 225 "sintatico.mly"
+# 228 "sintatico.mly"
                               ( (Menor, pos) )
 # 2776 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2782 "sintatico.ml"
          in
@@ -2819,13 +2819,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 226 "sintatico.mly"
+# 229 "sintatico.mly"
                               ( (MaiorIgual, pos) )
 # 2825 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2831 "sintatico.ml"
          in
@@ -2868,13 +2868,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 227 "sintatico.mly"
+# 230 "sintatico.mly"
                               ( (MenorIgual, pos) )
 # 2874 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2880 "sintatico.ml"
          in
@@ -2917,13 +2917,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 228 "sintatico.mly"
+# 231 "sintatico.mly"
                               ( (E, pos) )
 # 2923 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2929 "sintatico.ml"
          in
@@ -2966,13 +2966,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 229 "sintatico.mly"
+# 232 "sintatico.mly"
                               ( (Ou, pos) )
 # 2972 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 2978 "sintatico.ml"
          in
@@ -3015,13 +3015,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 230 "sintatico.mly"
+# 233 "sintatico.mly"
                               ( (Not, pos) )
 # 3021 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 3027 "sintatico.ml"
          in
@@ -3064,13 +3064,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 231 "sintatico.mly"
+# 234 "sintatico.mly"
                               ( (Mod, pos) )
 # 3070 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 3076 "sintatico.ml"
          in
@@ -3113,13 +3113,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 232 "sintatico.mly"
+# 235 "sintatico.mly"
                               ( (Div, pos) )
 # 3119 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 3125 "sintatico.ml"
          in
@@ -3162,13 +3162,13 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 233 "sintatico.mly"
+# 236 "sintatico.mly"
                               ( (Mult, pos) )
 # 3168 "sintatico.ml"
           
         in
         
-# 208 "sintatico.mly"
+# 211 "sintatico.mly"
                                      ( ExpOp (op, ee, ed) )
 # 3174 "sintatico.ml"
          in
@@ -3203,7 +3203,7 @@ module Tables = struct
         let _startpos = _startpos_pos_ in
         let _endpos = _endpos_e_ in
         let _v : (Sast.expressao) = 
-# 210 "sintatico.mly"
+# 213 "sintatico.mly"
                                      ( ExpUn ((UMenos, pos), e) )
 # 3209 "sintatico.ml"
          in
@@ -3238,7 +3238,7 @@ module Tables = struct
         let _startpos = _startpos_pos_ in
         let _endpos = _endpos_e_ in
         let _v : (Sast.expressao) = 
-# 211 "sintatico.mly"
+# 214 "sintatico.mly"
                                      ( ExpUn ((Not, pos), e) )
 # 3244 "sintatico.ml"
          in
@@ -3263,7 +3263,7 @@ module Tables = struct
         let _startpos = _startpos_ef_ in
         let _endpos = _endpos_ef_ in
         let _v : (Sast.expressao) = 
-# 212 "sintatico.mly"
+# 215 "sintatico.mly"
                                      ( ef )
 # 3269 "sintatico.ml"
          in
@@ -3376,7 +3376,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__11_ in
         let _v : (Sast.expressao Ast.funcao) = 
-# 109 "sintatico.mly"
+# 112 "sintatico.mly"
                 ( DecFun {fn_nome=nome; fn_tiporet=t; fn_formais=params; fn_locais=(List.flatten ds); fn_corpo=cs} )
 # 3382 "sintatico.ml"
          in
@@ -3394,7 +3394,7 @@ module Tables = struct
         let _startpos = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _endpos = _startpos in
         let _v : (Sast.expressao Ast.funcao list) = 
-# 102 "sintatico.mly"
+# 105 "sintatico.mly"
                               ( [] )
 # 3400 "sintatico.ml"
          in
@@ -3425,7 +3425,7 @@ module Tables = struct
         let _startpos = _startpos_f_ in
         let _endpos = _endpos_fs_ in
         let _v : (Sast.expressao Ast.funcao list) = 
-# 103 "sintatico.mly"
+# 106 "sintatico.mly"
                               ( f :: fs )
 # 3431 "sintatico.ml"
          in
@@ -3509,7 +3509,7 @@ module Tables = struct
         let _startpos = _startpos_t_ in
         let _endpos = _endpos_x_ in
         let _v : (Ast.ident Ast.pos * Ast.tipo) = 
-# 120 "sintatico.mly"
+# 123 "sintatico.mly"
                         ( (x, t) )
 # 3515 "sintatico.ml"
          in
@@ -3527,7 +3527,7 @@ module Tables = struct
         let _startpos = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _endpos = _startpos in
         let _v : ((Ast.ident Ast.pos * Ast.tipo) list) = 
-# 115 "sintatico.mly"
+# 118 "sintatico.mly"
                                             ( [] )
 # 3533 "sintatico.ml"
          in
@@ -3552,7 +3552,7 @@ module Tables = struct
         let _startpos = _startpos_p_ in
         let _endpos = _endpos_p_ in
         let _v : ((Ast.ident Ast.pos * Ast.tipo) list) = 
-# 116 "sintatico.mly"
+# 119 "sintatico.mly"
                                             ( [p] )
 # 3558 "sintatico.ml"
          in
@@ -3593,7 +3593,7 @@ module Tables = struct
         let _startpos = _startpos_p_ in
         let _endpos = _endpos_ps_ in
         let _v : ((Ast.ident Ast.pos * Ast.tipo) list) = 
-# 117 "sintatico.mly"
+# 120 "sintatico.mly"
                                             ( p :: ps )
 # 3599 "sintatico.ml"
          in
@@ -3611,7 +3611,7 @@ module Tables = struct
         let _startpos = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _endpos = _startpos in
         let _v : (Sast.expressao Ast.comandos option) = 
-# 164 "sintatico.mly"
+# 167 "sintatico.mly"
                                             ( None )
 # 3617 "sintatico.ml"
          in
@@ -3666,7 +3666,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__4_ in
         let _v : (Sast.expressao Ast.comandos option) = 
-# 165 "sintatico.mly"
+# 168 "sintatico.mly"
                                             ( Some cs )
 # 3672 "sintatico.ml"
          in
@@ -3701,7 +3701,7 @@ module Tables = struct
         let _startpos = _startpos__1_ in
         let _endpos = _endpos_c_ in
         let _v : (Sast.expressao Ast.comandos option) = 
-# 166 "sintatico.mly"
+# 169 "sintatico.mly"
                                             ( Some [c] )
 # 3707 "sintatico.ml"
          in
@@ -3743,9 +3743,9 @@ module Tables = struct
                       MenhirLib.EngineTypes.startp = _startpos__7_;
                       MenhirLib.EngineTypes.endp = _endpos__7_;
                       MenhirLib.EngineTypes.next = {
-                        MenhirLib.EngineTypes.semv = _6;
-                        MenhirLib.EngineTypes.startp = _startpos__6_;
-                        MenhirLib.EngineTypes.endp = _endpos__6_;
+                        MenhirLib.EngineTypes.semv = pos;
+                        MenhirLib.EngineTypes.startp = _startpos_pos_;
+                        MenhirLib.EngineTypes.endp = _endpos_pos_;
                         MenhirLib.EngineTypes.next = {
                           MenhirLib.EngineTypes.semv = fsa;
                           MenhirLib.EngineTypes.startp = _startpos_fsa_;
@@ -3800,11 +3800,11 @@ module Tables = struct
        (Lexing.position)
 # 3802 "sintatico.ml"
         ) = Obj.magic _7 in
-        let _6 : (
+        let pos : (
 # 11 "sintatico.mly"
        (Lexing.position)
 # 3807 "sintatico.ml"
-        ) = Obj.magic _6 in
+        ) = Obj.magic pos in
         let fsa : (Sast.expressao Ast.funcao list) = Obj.magic fsa in
         let _4 : (
 # 24 "sintatico.mly"
@@ -3835,8 +3835,11 @@ module Tables = struct
 # 3836 "sintatico.ml"
         ) = 
 # 99 "sintatico.mly"
-           ( Programa (List.flatten ds, fsa @ fsb, cs) )
-# 3840 "sintatico.ml"
+           ( Programa ([], fsa @ [DecFun {fn_nome=("fn_main", pos); 
+                                          fn_tiporet=Void; 
+                                          fn_formais=[]; fn_locais=(List.flatten ds); 
+                                          fn_corpo=cs}] @ fsb, [CmdFun (ExpFun (("fn_main",pos), []))]) )
+# 3843 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -3857,7 +3860,7 @@ module Tables = struct
         let x : (
 # 71 "sintatico.mly"
        (string * Lexing.position)
-# 3861 "sintatico.ml"
+# 3864 "sintatico.ml"
         ) = Obj.magic x in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos_x_ in
@@ -3865,7 +3868,7 @@ module Tables = struct
         let _v : (Ast.ident Ast.pos list) = 
 # 229 "/home/chuno/.opam/4.05.0/lib/menhir/standard.mly"
     ( [ x ] )
-# 3869 "sintatico.ml"
+# 3872 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -3897,12 +3900,12 @@ module Tables = struct
         let _2 : (
 # 44 "sintatico.mly"
        (Lexing.position)
-# 3901 "sintatico.ml"
+# 3904 "sintatico.ml"
         ) = Obj.magic _2 in
         let x : (
 # 71 "sintatico.mly"
        (string * Lexing.position)
-# 3906 "sintatico.ml"
+# 3909 "sintatico.ml"
         ) = Obj.magic x in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos_x_ in
@@ -3910,7 +3913,7 @@ module Tables = struct
         let _v : (Ast.ident Ast.pos list) = 
 # 231 "/home/chuno/.opam/4.05.0/lib/menhir/standard.mly"
     ( x :: xs )
-# 3914 "sintatico.ml"
+# 3917 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -3931,15 +3934,15 @@ module Tables = struct
         let _1 : (
 # 62 "sintatico.mly"
        (Lexing.position)
-# 3935 "sintatico.ml"
+# 3938 "sintatico.ml"
         ) = Obj.magic _1 in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__1_ in
         let _v : (Ast.tipo) = 
-# 241 "sintatico.mly"
+# 244 "sintatico.mly"
                ( Bool )
-# 3943 "sintatico.ml"
+# 3946 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -3960,15 +3963,15 @@ module Tables = struct
         let _1 : (
 # 26 "sintatico.mly"
        (Lexing.position)
-# 3964 "sintatico.ml"
+# 3967 "sintatico.ml"
         ) = Obj.magic _1 in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__1_ in
         let _v : (Ast.tipo) = 
-# 242 "sintatico.mly"
+# 245 "sintatico.mly"
                ( Int )
-# 3972 "sintatico.ml"
+# 3975 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -3989,15 +3992,15 @@ module Tables = struct
         let _1 : (
 # 45 "sintatico.mly"
        (Lexing.position)
-# 3993 "sintatico.ml"
+# 3996 "sintatico.ml"
         ) = Obj.magic _1 in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__1_ in
         let _v : (Ast.tipo) = 
-# 243 "sintatico.mly"
+# 246 "sintatico.mly"
                ( Float )
-# 4001 "sintatico.ml"
+# 4004 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -4018,15 +4021,15 @@ module Tables = struct
         let _1 : (
 # 57 "sintatico.mly"
        (Lexing.position)
-# 4022 "sintatico.ml"
+# 4025 "sintatico.ml"
         ) = Obj.magic _1 in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__1_ in
         let _v : (Ast.tipo) = 
-# 244 "sintatico.mly"
+# 247 "sintatico.mly"
                ( Char )
-# 4030 "sintatico.ml"
+# 4033 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -4047,15 +4050,15 @@ module Tables = struct
         let _1 : (
 # 40 "sintatico.mly"
        (Lexing.position)
-# 4051 "sintatico.ml"
+# 4054 "sintatico.ml"
         ) = Obj.magic _1 in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__1_ in
         let _v : (Ast.tipo) = 
-# 245 "sintatico.mly"
+# 248 "sintatico.mly"
                ( String )
-# 4059 "sintatico.ml"
+# 4062 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -4076,15 +4079,15 @@ module Tables = struct
         let _1 : (
 # 23 "sintatico.mly"
        (Lexing.position)
-# 4080 "sintatico.ml"
+# 4083 "sintatico.ml"
         ) = Obj.magic _1 in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos__1_ in
         let _endpos = _endpos__1_ in
         let _v : (Ast.tipo) = 
-# 246 "sintatico.mly"
+# 249 "sintatico.mly"
                ( Void )
-# 4088 "sintatico.ml"
+# 4091 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -4105,15 +4108,15 @@ module Tables = struct
         let x : (
 # 71 "sintatico.mly"
        (string * Lexing.position)
-# 4109 "sintatico.ml"
+# 4112 "sintatico.ml"
         ) = Obj.magic x in
         let _endpos__0_ = _menhir_stack.MenhirLib.EngineTypes.endp in
         let _startpos = _startpos_x_ in
         let _endpos = _endpos_x_ in
         let _v : (Sast.expressao Ast.variavel) = 
-# 237 "sintatico.mly"
+# 240 "sintatico.mly"
                 (VarSimples x )
-# 4117 "sintatico.ml"
+# 4120 "sintatico.ml"
          in
         {
           MenhirLib.EngineTypes.state = _menhir_s;
@@ -4144,7 +4147,7 @@ let programa =
     (Obj.magic (MenhirInterpreter.entry 0 lexer lexbuf) : (
 # 87 "sintatico.mly"
        (Sast.expressao Ast.programa)
-# 4148 "sintatico.ml"
+# 4151 "sintatico.ml"
     ))
 
 module Incremental = struct
@@ -4154,7 +4157,7 @@ module Incremental = struct
       (Obj.magic (MenhirInterpreter.start 0 initial_position) : (
 # 87 "sintatico.mly"
        (Sast.expressao Ast.programa)
-# 4158 "sintatico.ml"
+# 4161 "sintatico.ml"
       ) MenhirInterpreter.checkpoint)
   
 end
@@ -4162,4 +4165,4 @@ end
 # 233 "/home/chuno/.opam/4.05.0/lib/menhir/standard.mly"
   
 
-# 4166 "sintatico.ml"
+# 4169 "sintatico.ml"
